@@ -20,12 +20,12 @@ var page = {
 
 
   initEvents: function () {
-    $('.message').on('submit', page.addMessage)
+    $('#messageForm').on('submit', page.addMessage)
 
   },
 
   addOneMessageToDOM: function(message) {
-    page.loadtemplate("message", message, $('.message'))
+    page.loadTemplate("message", message, $('#sectionMain'));
   },
 
   addAllMessagesToDOM: function(messageCollection) {
@@ -103,10 +103,10 @@ createMessage: function (newMessage) {
 
 
   addMessage: function(event) {
-    event.preventDefault
+    event.preventDefault();
     // var messageTime = ()
     var newMessage = {
-      message: $('#messageInput').val(),
+      content: $('#messageInput').val()
       // messageId: $('.message').data('id'),
       // time: $()
   }
@@ -129,7 +129,7 @@ createMessage: function (newMessage) {
   loadTemplate: function (tmplName, data, $target){
     var compiledTmpl = _.template(page.getTemplate(tmplName));
 
-    $target.append(compiledTmpl(data));
+    $target.prepend(compiledTmpl(data));
   },
 
   getTemplate: function(name) {
