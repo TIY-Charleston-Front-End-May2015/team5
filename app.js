@@ -19,7 +19,11 @@ var page = {
   },
 
 
+
   initEvents: function () {
+
+  initEvents: function (event) {
+
     $('#messageForm').on('submit', page.addMessage)
 
   },
@@ -33,8 +37,6 @@ var page = {
   },
 
   loadMessages: function () {
-
-
     $.ajax({
     url: page.url,
     method: 'GET',
@@ -42,8 +44,7 @@ var page = {
       ///need to add here
       console.log("success");
       console.log(data);
-      page.addAllMessagesToDOM(data);
-
+      page.addAllMessagesToDOM(data.reverse());
     },
     error: function (err) {
 
@@ -51,7 +52,7 @@ var page = {
   });
 },
 
-createMessage: function (newMessage) {
+  createMessage: function (newMessage) {
 
     $.ajax({
       url: page.url,
@@ -61,6 +62,8 @@ createMessage: function (newMessage) {
 
         page.addOneMessageToDOM(data);
         console.log("success!!: ", data);
+        $('#messageInput').val("");
+        $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
       },
       error: function (err) {
         console.log("error ", err);
@@ -106,15 +109,16 @@ createMessage: function (newMessage) {
     event.preventDefault();
     // var messageTime = ()
     var newMessage = {
+
       content: $('#messageInput').val()
+
+      content: $('#messageInput').val(),
+
       // messageId: $('.message').data('id'),
       // time: $()
-  }
+    }
     console.log(newMessage);
-
-    page.createMessage(newMessage),
-
-    $('#messageInput').html("")
+    page.createMessage(newMessage);
 
   },
 

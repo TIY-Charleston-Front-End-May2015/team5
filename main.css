@@ -1,0 +1,207 @@
+/*********************
+VARIABLES
+*********************/
+/*********************
+SETUP
+*********************/
+html, body {
+  height: 100%;
+  width: 100%; }
+
+html {
+  font-size: 24px; }
+
+body {
+  color: #535353;
+  font-family: "Roboto", sans; }
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+h1, h2, h3, h4, h5, h6, ul, li, p {
+  margin: 0;
+  padding: 0; }
+
+img {
+  max-width: 100%; }
+
+a {
+  text-decoration: none; }
+
+/*********************
+GENERAL
+*********************/
+#pageWrapper {
+  max-width: 900px;
+  margin: 0 auto; }
+
+#siteTitleBlock {
+  text-align: center;
+  padding: 20px 0; }
+  #siteTitleBlock h1 {
+    font-size: 4rem;
+    font-weight: lighter; }
+
+#chat {
+  width: 100%;
+  height: 700px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 20px 1px #535353;
+  -moz-box-shadow: 0px 5px 20px 1px #535353;
+  box-shadow: 0px 5px 20px 1px #535353; }
+
+/*********************
+HEADER
+*********************/
+header {
+  height: 10%;
+  border-bottom: 1px solid gray; }
+
+/*********************
+MAIN
+*********************/
+main {
+  display: flex;
+  height: 78%; }
+
+/*********************
+ASIDE
+*********************/
+aside {
+  width: 25%;
+  height: 100%;
+  border-right: 1px solid gray; }
+
+#asideHeader {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid gray; }
+
+#asideMain {
+  height: 90%; }
+
+.status {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: #424242;
+  border-bottom: 1px solid gray; }
+  .status > div {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+
+.statusImage {
+  width: 25%; }
+  .statusImage img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%; }
+
+.statusName {
+  width: 50%;
+  font-size: .8rem; }
+
+.statusOn {
+  width: 25%; }
+  .statusOn .statusOnCircle {
+    height: 20px;
+    width: 20px;
+    background-color: lightgreen;
+    border-radius: 50%; }
+
+/*********************
+SECTION
+*********************/
+section {
+  width: 75%;
+  height: 100%; }
+
+#sectionHeader {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid gray; }
+
+#sectionMain {
+  height: 90%;
+  overflow: scroll;
+  padding-bottom: 12.5px; }
+
+/*********************
+MESSAGE
+*********************/
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12.5px 0 0 0; }
+  .message:last-child .messageBorderBlock {
+    display: none; }
+
+.messageInfo {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  height: 125px; }
+
+.messageInfoImage {
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; }
+  .messageInfoImage img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%; }
+
+.messageInfoName {
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; }
+
+.messageContent {
+  width: 75%; }
+
+.messageContentTime {
+  color: gray;
+  font-weight: lighter;
+  font-size: 0.8rem;
+  margin-bottom: 5px; }
+
+.messageBorderBlock {
+  width: 45%;
+  height: 12.5px;
+  margin: 0 auto;
+  border-bottom: 1px solid gray; }
+
+/*********************
+FOOTER
+*********************/
+footer {
+  height: 12%;
+  border-top: 1px solid gray; }
+
+#footerBlock {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto; }
+
+#messageForm {
+  height: 100%;
+  display: flex;
+  align-items: center; }
+  #messageForm input {
+    height: 70%; }
+  #messageForm #messageInput {
+    width: 90%;
+    padding-left: 2.5%; }
+    #messageForm #messageInput:focus {
+      outline: 0; }
+  #messageForm #messageSubmit {
+    width: 10%;
+    font-weight: lighter; }
