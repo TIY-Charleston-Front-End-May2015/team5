@@ -35,7 +35,6 @@ var page = {
   loadMessages: function () {
 
 
-
     $.ajax({
     url: page.url,
     method: 'GET',
@@ -52,7 +51,7 @@ var page = {
   });
 },
 
-createItem: function (newMessage) {
+createMessage: function (newMessage) {
 
     $.ajax({
       url: page.url,
@@ -79,7 +78,7 @@ createItem: function (newMessage) {
     success: function (data) {
 /////need to determine where?/////
       $('.message').html('');
-      page.loadPosts();
+      page.loadMessages();
 
     },
     error: function (err) {}
@@ -96,7 +95,7 @@ createItem: function (newMessage) {
     success: function (data) {
 
       $('.message').html('');
-      page.loadPosts();
+      page.loadMessages();
     },
   });
 },
@@ -107,13 +106,13 @@ createItem: function (newMessage) {
     event.preventDefault
     // var messageTime = ()
     var newMessage = {
-      message: $('input[id=messageInput]').val(),
-      messageId: $('.message').data('id'),
+      message: $('#messageInput').val(),
+      // messageId: $('.message').data('id'),
       // time: $()
-  };
+  }
     console.log(newMessage);
 
-    page.createItem(newMessage),
+    page.createMessage(newMessage),
 
     $('#messageInput').html("")
 
