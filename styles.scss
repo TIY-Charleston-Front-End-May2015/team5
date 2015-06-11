@@ -7,7 +7,7 @@ $inactivegray: #DBDBDB;
 $bggray: #F5F5F5;
 $darkgray: #79CBB9;
 $fontblack: #535353;
-$roboto: 'Roboto', sans;
+$roboto: 'Roboto', sans, #fff;
 $bgColor: #060606;
 $defaultButtonBG: rgb(66,66,66);
 $primaryButtonBG: rgb(42, 159, 214);
@@ -570,12 +570,15 @@ FOOTER
 footer {
   height: 12%;
   border-top: 1px solid gray;
+  background-color: $defaultButtonBG;
+
 }
 
 #footerBlock {
   width: 80%;
   height: 100%;
   margin: 0 auto;
+
 }
 
 #messageForm {

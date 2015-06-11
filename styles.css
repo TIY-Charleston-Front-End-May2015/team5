@@ -14,7 +14,7 @@ html {
 body {
   background-color: #060606;
   color: #535353;
-  font-family: "Roboto", sans; }
+  font-family: "Roboto", sans, #fff; }
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -400,7 +400,8 @@ FOOTER
 *********************/
 footer {
   height: 12%;
-  border-top: 1px solid gray; }
+  border-top: 1px solid gray;
+  background-color: #424242; }
 
 #footerBlock {
   width: 80%;
