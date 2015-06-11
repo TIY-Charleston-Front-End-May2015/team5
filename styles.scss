@@ -8,7 +8,16 @@ $bggray: #F5F5F5;
 $darkgray: #79CBB9;
 $fontblack: #535353;
 $roboto: 'Roboto', sans;
-
+$defaultButtonBG: rgb(66,66,66);
+$primaryButtonBG: rgb(42, 159, 214);
+$successButtonBG: rgb(119, 179, 0);
+$infoButtonBG: rgb(153, 51, 204);
+$warningButtonBG: rgb(255, 136, 0);
+$dangerButtonBG: rgb(204, 0, 0);
+$color: rgb(255, 255, 255);
+$pageBG: rgb(6, 6, 6);
+$aLinkColor: #2a9fd6;
+$bodyColor: #8888A0;
 /*********************
 SETUP
 *********************/
@@ -117,7 +126,7 @@ aside {
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: #dddddd;
+  background-color: rgb(66,66,66);
   border-bottom: 1px solid gray;
 
   > div {
