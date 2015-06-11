@@ -54,10 +54,23 @@ GENERAL
   margin: 0 auto;
 }
 
+#siteTitleBlock {
+  text-align: center;
+  padding: 20px 0;
+
+  h1 {
+    font-size: 4rem;
+    font-weight: lighter;
+  }
+}
+
 #chat {
   width: 100%;
   height: 700px;
-  border: 3px solid $fontblack;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 20px 1px rgba(83,83,83,1);
+  -moz-box-shadow: 0px 5px 20px 1px rgba(83,83,83,1);
+  box-shadow: 0px 5px 20px 1px rgba(83,83,83,1);
 }
 
 /*********************
@@ -65,7 +78,7 @@ HEADER
 *********************/
 
 header {
-  height: 7%;
+  height: 10%;
   border-bottom: 1px solid gray;
 }
 
@@ -89,7 +102,7 @@ aside {
 }
 
 #asideHeader {
-  height: 7%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,7 +110,7 @@ aside {
 }
 
 #asideMain {
-  height: 93%;
+  height: 90%;
 }
 
 .status {
@@ -150,7 +163,7 @@ section {
 }
 
 #sectionHeader {
-  height: 7%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,7 +175,7 @@ section {
 }
 
 #sectionMain {
-  height: 93%;
+  height: 90%;
   overflow: scroll;
   padding-bottom: 12.5px;
 }
@@ -233,7 +246,7 @@ FOOTER
 *********************/
 
 footer {
-  height: 15%;
+  height: 12%;
   border-top: 1px solid gray;
 }
 
