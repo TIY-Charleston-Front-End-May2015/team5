@@ -1,0 +1,22 @@
+{
+  "name": "team5",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ClaytonKinder/team5",
+  "authors": [
+    "Clayton Kinder <ClaytonAlanKinder@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "normalize.css": "~3.0.3",
+    "octicons": "~2.4.1",
+    "underscore": "~1.8.3"
+  }
+}
