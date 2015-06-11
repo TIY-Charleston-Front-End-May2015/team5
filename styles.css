@@ -12,7 +12,7 @@ html {
   font-size: 24px; }
 
 body {
-  background-color: #F5F5F5;
+  color: #535353;
   font-family: "Roboto", sans; }
 
 *, *:before, *:after {
@@ -32,5 +32,168 @@ a {
 /*********************
 GENERAL
 *********************/
+#pageWrapper {
+  max-width: 900px;
+  margin: 0 auto; }
+
+#chat {
+  width: 100%;
+  height: 700px;
+  border: 3px solid #535353; }
+
+/*********************
+HEADER
+*********************/
+header {
+  height: 7%;
+  border-bottom: 1px solid gray; }
+
+/*********************
+MAIN
+*********************/
+main {
+  display: flex;
+  height: 78%; }
+
+/*********************
+ASIDE
+*********************/
+aside {
+  width: 25%;
+  height: 100%;
+  border-right: 1px solid gray; }
+
+#asideHeader {
+  height: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid gray; }
+
+#asideMain {
+  height: 93%; }
+
+.status {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: #dddddd;
+  border-bottom: 1px solid gray; }
+  .status > div {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+
+.statusImage {
+  width: 25%; }
+  .statusImage img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%; }
+
+.statusName {
+  width: 50%;
+  font-size: .8rem; }
+
+.statusOn {
+  width: 25%; }
+  .statusOn .statusOnCircle {
+    height: 20px;
+    width: 20px;
+    background-color: lightgreen;
+    border-radius: 50%; }
+
+/*********************
+SECTION
+*********************/
+section {
+  width: 75%;
+  height: 100%; }
+
+#sectionHeader {
+  height: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid gray; }
+
+#sectionMain {
+  height: 93%;
+  overflow: scroll;
+  padding-bottom: 12.5px; }
+
+/*********************
+MESSAGE
+*********************/
+.message {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 12.5px 0 0 0; }
+  .message:last-child .messageBorderBlock {
+    display: none; }
+
+.messageInfo {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  height: 125px; }
+
+.messageInfoImage {
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; }
+  .messageInfoImage img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%; }
+
+.messageInfoName {
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; }
+
+.messageContent {
+  width: 75%; }
+
+.messageContentTime {
+  color: gray;
+  font-weight: lighter;
+  font-size: 0.8rem;
+  margin-bottom: 5px; }
+
+.messageBorderBlock {
+  width: 45%;
+  height: 12.5px;
+  margin: 0 auto;
+  border-bottom: 1px solid gray; }
+
+/*********************
+FOOTER
+*********************/
+footer {
+  height: 15%;
+  border-top: 1px solid gray; }
+
+#footerBlock {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto; }
+
+#messageForm {
+  height: 100%;
+  display: flex;
+  align-items: center; }
+  #messageForm input {
+    height: 70%; }
+  #messageForm #messageInput {
+    width: 90%;
+    padding-left: 2.5%; }
+    #messageForm #messageInput:focus {
+      outline: 0; }
+  #messageForm #messageSubmit {
+    width: 10%;
+    font-weight: lighter; }
 
 /*# sourceMappingURL=styles.css.map */
