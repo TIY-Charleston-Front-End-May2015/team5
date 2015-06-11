@@ -19,13 +19,13 @@ var page = {
   },
 
 
-  initEvents: function () {
-    $('.message').on('submit', page.addMessage)
+  initEvents: function (event) {
+    $('#messageForm').on('submit', page.addMessage)
 
   },
 
   addOneMessageToDOM: function(message) {
-    page.loadtemplate("message", message, $('.message'))
+    page.loadTemplate("message", message, $('#sectionMain'));
   },
 
   addAllMessagesToDOM: function(messageCollection) {
@@ -33,8 +33,6 @@ var page = {
   },
 
   loadMessages: function () {
-
-
     $.ajax({
     url: page.url,
     method: 'GET',
@@ -42,8 +40,7 @@ var page = {
       ///need to add here
       console.log("success");
       console.log(data);
-      page.addAllMessagesToDOM(data);
-
+      page.addAllMessagesToDOM(data.reverse());
     },
     error: function (err) {
 
@@ -51,7 +48,7 @@ var page = {
   });
 },
 
-createMessage: function (newMessage) {
+  createMessage: function (newMessage) {
 
     $.ajax({
       url: page.url,
@@ -61,6 +58,8 @@ createMessage: function (newMessage) {
 
         page.addOneMessageToDOM(data);
         console.log("success!!: ", data);
+        $('#messageInput').val("");
+        $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
       },
       error: function (err) {
         console.log("error ", err);
@@ -103,18 +102,15 @@ createMessage: function (newMessage) {
 
 
   addMessage: function(event) {
-    event.preventDefault
+    event.preventDefault();
     // var messageTime = ()
     var newMessage = {
-      message: $('#messageInput').val(),
+      content: $('#messageInput').val(),
       // messageId: $('.message').data('id'),
       // time: $()
-  }
+    }
     console.log(newMessage);
-
-    page.createMessage(newMessage),
-
-    $('#messageInput').html("")
+    page.createMessage(newMessage);
 
   },
 

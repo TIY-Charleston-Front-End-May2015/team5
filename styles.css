@@ -277,7 +277,7 @@ aside {
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: #dddddd;
+  background-color: #424242;
   border-bottom: 1px solid gray; }
   .status > div {
     display: flex;
@@ -371,6 +371,7 @@ MESSAGE
 
 .messageDeleteCircle {
   position: relative;
+  cursor: pointer;
   width: 25px;
   height: 25px;
   border: 1px solid gray;
