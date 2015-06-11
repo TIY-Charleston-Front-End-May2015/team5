@@ -17,7 +17,6 @@ $dangerButtonBG: rgb(204, 0, 0);
 $color: rgb(255, 255, 255);
 $pageBG: rgb(6, 6, 6);
 $aLinkColor: #2a9fd6;
-$bodyColor: #8888A0;
 /*********************
 SETUP
 *********************/
@@ -126,7 +125,7 @@ aside {
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: rgb(66,66,66);
+  background-color: $defaultButtonBG;
   border-bottom: 1px solid gray;
 
   > div {
