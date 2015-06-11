@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SuperChat</title>
+  <title>Blabber</title>
   <link href='http://fonts.googleapis.com/css?family=Roboto:700,400,100' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="bower_components/normalize.css/normalize.css">
   <link rel="stylesheet" type="text/css" href="bower_components/octicons/octicons/octicons.css">
@@ -13,11 +13,100 @@
 
 <div id="pageWrapper">
   <div id="siteTitleBlock">
-    <h1>SuperChat</h1>
+    <h1>Blabber</h1>
   </div>
   <div id="chat">
     <header>
-      Header
+      <div id="headerLoggedOutBlock" class="active">
+        <div id="loggedOutLeft">
+          <div id="loggedOutLeftLogo">
+            <img src="http://placehold.it/100x100">
+          </div>
+          <div id="loggedOutLeftCreate">
+            <a href="#">Create Account</a>
+          </div>
+        </div>
+        <div id="loggedOutRight">
+          <div id="loggedOutRightForm">
+            <form id="logInForm">
+              <div id="logInFormUsernameBlock">
+                <div>
+                  <label for="logInFormUsername">Username:</label>
+                </div>
+                <div>
+                  <input type="text" id="logInFormUsername" name="logInFormUsername">
+                </div>
+              </div>
+              <div id="logInFormPasswordBlock">
+                <div>
+                  <label for="logInFormPassword">Password:</label>
+                </div>
+                <div>
+                  <input type="password" id="logInFormPassword" name="logInFormPassword">
+                </div>
+              </div>
+              <div id="logInFormSubmitBlock">
+                <input type="submit" id="logInFormSubmit" value="Log In">
+              </div>
+            </form>
+          </div>
+          <div id="loggedOutRightError">
+            <div id="error" class="activeError">
+              <div id="errorSymbolBlock">
+                <div id="errorSymbol">
+                  <span class="mega-octicon octicon-alert"></span>
+                </div>
+              </div>
+              <div id="errorTextBlock">
+                <div id="errorText">Username not found</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="loggedOutCreate" class="activeCreate">
+          <form id="createForm">
+            <div id="createFormUsernameBlock">
+              <div>
+                <label for="createFormUsername">Username: </label>
+              </div>
+              <div>
+                <input type="text" id="createFormUsername" name="createFormUsername">
+              </div>
+            </div>
+            <div id="createFormPasswordBlock">
+              <div>
+                <label for="createFormPassword">Password: </label>
+              </div>
+              <div>
+                <input type="password" id="createFormPassword" name="createFormPassword">
+              </div>
+            </div>
+            <div id="createFormSubmitBlock">
+              <div>
+                <input type="submit" value="Create">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="headerLoggedInBlock" class="">
+        <div id="loggedInLeft">
+            <img src="http://placehold.it/100x100">
+        </div>
+        <div id="loggedInMiddle">
+          <div id="loggedInMiddleBlock">
+            <div id="loggedInMiddleImage">
+              <img src="http://placehold.it/100x100">
+            </div>
+            <div id="loggedInMiddleName">
+              Username
+            </div>
+          </div>
+        </div>
+        <div id="loggedInRight">
+          <button id="logOutButton">Log Out</button>
+        </div>
+      </div>
     </header>
     <main>
       <aside>
@@ -90,6 +179,13 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere excepturi obcaecati perspiciatis nihil. Nihil, magnam perferendis voluptas culpa libero quos, voluptate quia fugit nemo aliquid, minus aut inventore architecto error.
               </div>
             </div>
+            <div class="messageDelete">
+              <div class="messageDeleteCircle">
+                <div class="messageDeleteX">
+                  X
+                </div>
+              </div>
+            </div>
             <div class="messageBorderBlock"></div>
           </div>
           <div class="message">
@@ -111,6 +207,13 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere excepturi obcaecati perspiciatis nihil. Nihil, magnam perferendis voluptas culpa libero quos, voluptate quia fugit nemo aliquid, minus aut inventore architecto error.
               </div>
             </div>
+            <div class="messageDelete">
+              <div class="messageDeleteCircle">
+                <div class="messageDeleteX">
+                  X
+                </div>
+              </div>
+            </div>
             <div class="messageBorderBlock"></div>
           </div>
           <div class="message">
@@ -130,6 +233,13 @@
               </div>
               <div class="messageContentText">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere excepturi obcaecati perspiciatis nihil. Nihil, magnam perferendis voluptas culpa libero quos, voluptate quia fugit nemo aliquid, minus aut inventore architecto error.
+              </div>
+            </div>
+            <div class="messageDelete">
+              <div class="messageDeleteCircle">
+                <div class="messageDeleteX">
+                  X
+                </div>
               </div>
             </div>
             <div class="messageBorderBlock"></div>

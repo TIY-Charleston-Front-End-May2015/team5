@@ -57,6 +57,198 @@ HEADER
 header {
   height: 10%;
   border-bottom: 1px solid gray; }
+  header > div {
+    height: 100%;
+    width: 100%;
+    display: none; }
+  header > div.active {
+    display: flex; }
+
+#headerLoggedOutBlock {
+  justify-content: space-between;
+  position: relative; }
+  #headerLoggedOutBlock #loggedOutLeft {
+    display: flex;
+    width: 25%; }
+    #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftLogo {
+      width: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftLogo img {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%; }
+    #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftCreate {
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start; }
+      #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftCreate a {
+        font-size: .75rem;
+        color: #535353;
+        text-decoration: underline; }
+  #headerLoggedOutBlock #loggedOutRight {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    align-items: center; }
+    #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm {
+      width: 75%;
+      height: 80%;
+      display: flex;
+      align-items: center; }
+      #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm {
+        height: 100%;
+        display: flex; }
+        #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm > div {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; }
+          #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm > div > div {
+            height: 50%;
+            text-align: center; }
+            #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm > div > div > label {
+              font-size: .75rem; }
+            #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm > div > div > input {
+              width: 90%;
+              height: 100%;
+              margin: 0 auto; }
+        #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormUsernameBlock {
+          width: 40%; }
+        #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormPasswordBlock {
+          width: 40%; }
+        #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormSubmitBlock {
+          width: 20%;
+          height: 100%; }
+          #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormSubmitBlock > input {
+            height: 100%;
+            background-color: white;
+            border: 1px solid lightgreen;
+            color: lightgreen;
+            transition: all 0.25s ease;
+            -webkit-transition: all 0.25s ease; }
+            #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormSubmitBlock > input:hover {
+              color: white;
+              background-color: lightgreen; }
+    #headerLoggedOutBlock #loggedOutRight #loggedOutRightError {
+      width: 25%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error {
+        display: none;
+        background-color: red;
+        width: 90%;
+        height: 80%; }
+        #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error #errorSymbolBlock {
+          height: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+          #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error #errorSymbolBlock span:before {
+            color: white;
+            font-size: .9rem; }
+        #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error #errorTextBlock {
+          height: 50%;
+          color: white;
+          font-size: .65rem;
+          display: flex;
+          justify-content: center;
+          align-items: center; }
+      #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error.activeError {
+        display: block; }
+  #headerLoggedOutBlock #loggedOutCreate {
+    position: absolute;
+    background: lightgray;
+    left: 0;
+    top: 100%;
+    width: 50%;
+    padding: 20px 0;
+    display: none; }
+    #headerLoggedOutBlock #loggedOutCreate #createForm {
+      width: 80%;
+      margin: 0 auto; }
+      #headerLoggedOutBlock #loggedOutCreate #createForm > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px; }
+        #headerLoggedOutBlock #loggedOutCreate #createForm > div:last-child {
+          margin-bottom: 0; }
+        #headerLoggedOutBlock #loggedOutCreate #createForm > div > div {
+          width: 60%; }
+          #headerLoggedOutBlock #loggedOutCreate #createForm > div > div:first-child {
+            width: 40%; }
+          #headerLoggedOutBlock #loggedOutCreate #createForm > div > div > input {
+            width: 100%; }
+          #headerLoggedOutBlock #loggedOutCreate #createForm > div > div > input[type=submit] {
+            background-color: white;
+            color: lightgreen;
+            border: 1px solid lightgreen;
+            transition: all 0.25s ease;
+            -webkit-transition: all 0.25s ease; }
+            #headerLoggedOutBlock #loggedOutCreate #createForm > div > div > input[type=submit]:hover {
+              color: white;
+              background-color: lightgreen; }
+  #headerLoggedOutBlock #loggedOutCreate.activeCreate {
+    display: block; }
+
+#headerLoggedInBlock #loggedInLeft {
+  width: 7.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  #headerLoggedInBlock #loggedInLeft img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%; }
+
+#headerLoggedInBlock #loggedInMiddle {
+  width: 85%;
+  height: 100%; }
+  #headerLoggedInBlock #loggedInMiddle #loggedInMiddleBlock {
+    height: 100%;
+    width: 40%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    #headerLoggedInBlock #loggedInMiddle #loggedInMiddleBlock #loggedInMiddleImage {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #headerLoggedInBlock #loggedInMiddle #loggedInMiddleBlock #loggedInMiddleImage img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%; }
+    #headerLoggedInBlock #loggedInMiddle #loggedInMiddleBlock #loggedInMiddleName {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+
+#headerLoggedInBlock #loggedInRight {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  #headerLoggedInBlock #loggedInRight button {
+    width: 95%;
+    height: 70%;
+    font-size: .6rem;
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+    transition: all 0.25s ease;
+    -webkit-transition: all 0.25s ease; }
+    #headerLoggedInBlock #loggedInRight button:hover {
+      background-color: red;
+      color: white; }
 
 /*********************
 MAIN
@@ -165,13 +357,36 @@ MESSAGE
   align-items: flex-start; }
 
 .messageContent {
-  width: 75%; }
+  width: 72.5%; }
 
 .messageContentTime {
   color: gray;
   font-weight: lighter;
   font-size: 0.8rem;
   margin-bottom: 5px; }
+
+.messageDelete {
+  width: 7.5%;
+  text-align: center;
+  display: flex;
+  justify-content: center; }
+
+.messageDeleteCircle {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  font-weight: lighter;
+  font-size: .75rem; }
+
+.messageDeleteX {
+  position: absolute;
+  top: .5px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto; }
 
 .messageBorderBlock {
   width: 45%;
