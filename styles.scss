@@ -8,7 +8,16 @@ $bggray: #F5F5F5;
 $darkgray: #79CBB9;
 $fontblack: #535353;
 $roboto: 'Roboto', sans;
-
+$defaultButtonBG: rgb(66,66,66);
+$primaryButtonBG: rgb(42, 159, 214);
+$successButtonBG: rgb(119, 179, 0);
+$infoButtonBG: rgb(153, 51, 204);
+$warningButtonBG: rgb(255, 136, 0);
+$dangerButtonBG: rgb(204, 0, 0);
+$color: rgb(255, 255, 255);
+$pageBG: rgb(6, 6, 6);
+$aLinkColor: #2a9fd6;
+$bodyColor: #8888A0;
 /*********************
 SETUP
 *********************/
@@ -54,10 +63,23 @@ GENERAL
   margin: 0 auto;
 }
 
+#siteTitleBlock {
+  text-align: center;
+  padding: 20px 0;
+
+  h1 {
+    font-size: 4rem;
+    font-weight: lighter;
+  }
+}
+
 #chat {
   width: 100%;
   height: 700px;
-  border: 3px solid $fontblack;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 5px 20px 1px rgba(83,83,83,1);
+  -moz-box-shadow: 0px 5px 20px 1px rgba(83,83,83,1);
+  box-shadow: 0px 5px 20px 1px rgba(83,83,83,1);
 }
 
 /*********************
@@ -65,7 +87,7 @@ HEADER
 *********************/
 
 header {
-  height: 7%;
+  height: 10%;
   border-bottom: 1px solid gray;
 }
 
@@ -89,7 +111,7 @@ aside {
 }
 
 #asideHeader {
-  height: 7%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,14 +119,14 @@ aside {
 }
 
 #asideMain {
-  height: 93%;
+  height: 90%;
 }
 
 .status {
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: #dddddd;
+  background-color: rgb(66,66,66);
   border-bottom: 1px solid gray;
 
   > div {
@@ -150,7 +172,7 @@ section {
 }
 
 #sectionHeader {
-  height: 7%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -162,7 +184,7 @@ section {
 }
 
 #sectionMain {
-  height: 93%;
+  height: 90%;
   overflow: scroll;
   padding-bottom: 12.5px;
 }
@@ -233,7 +255,7 @@ FOOTER
 *********************/
 
 footer {
-  height: 15%;
+  height: 12%;
   border-top: 1px solid gray;
 }
 
