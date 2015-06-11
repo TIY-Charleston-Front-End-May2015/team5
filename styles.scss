@@ -7,7 +7,8 @@ $inactivegray: #DBDBDB;
 $bggray: #F5F5F5;
 $darkgray: #79CBB9;
 $fontblack: #535353;
-$roboto: 'Roboto', sans;
+$roboto: 'Roboto', sans, #fff;
+$bgColor: #060606;
 $defaultButtonBG: rgb(66,66,66);
 $primaryButtonBG: rgb(42, 159, 214);
 $successButtonBG: rgb(119, 179, 0);
@@ -17,7 +18,6 @@ $dangerButtonBG: rgb(204, 0, 0);
 $color: rgb(255, 255, 255);
 $pageBG: rgb(6, 6, 6);
 $aLinkColor: #2a9fd6;
-$bodyColor: #8888A0;
 /*********************
 SETUP
 *********************/
@@ -32,6 +32,7 @@ html {
 }
 
 body {
+  background-color: $bgColor;
   color: $fontblack;
   font-family: $roboto;
 }
@@ -412,7 +413,7 @@ aside {
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: rgb(66,66,66);
+  background-color: $defaultButtonBG;
   border-bottom: 1px solid gray;
 
   > div {
@@ -570,12 +571,15 @@ FOOTER
 footer {
   height: 12%;
   border-top: 1px solid gray;
+  background-color: $defaultButtonBG;
+
 }
 
 #footerBlock {
   width: 80%;
   height: 100%;
   margin: 0 auto;
+
 }
 
 #messageForm {
