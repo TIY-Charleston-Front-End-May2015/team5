@@ -8,6 +8,7 @@ $bggray: #F5F5F5;
 $darkgray: #79CBB9;
 $fontblack: #535353;
 $roboto: 'Roboto', sans;
+$bgColor: #060606;
 $defaultButtonBG: rgb(66,66,66);
 $primaryButtonBG: rgb(42, 159, 214);
 $successButtonBG: rgb(119, 179, 0);
@@ -31,6 +32,7 @@ html {
 }
 
 body {
+  background-color: $bgColor;
   color: $fontblack;
   font-family: $roboto;
 }
