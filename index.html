@@ -4,13 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blabber</title>
+  <link rel="icon" type="image/png" href="images/blabber_logo.png">
   <link href='http://fonts.googleapis.com/css?family=Roboto:700,400,100' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="bower_components/normalize.css/normalize.css">
   <link rel="stylesheet" type="text/css" href="bower_components/octicons/octicons/octicons.css">
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<div id="landingPage" style="display: none">
+<div id="landingPage" style="">
   <div id="landingPageBlock">
     <div id="landingPageTitleBlock">
       <h1>Blabber</h1>
@@ -20,6 +21,53 @@
         <div id="landingPageUsernameBlock">
           <label for="landingFormUsername">Username: </label>
           <input type="text" name="landingFormUsername" id="landingFormUsername">
+          <div id="landingPageUsernameErrorBlock">
+            <div id="landingPageUsernameError">
+              <div id="usernameErrorIcon">
+                <span class="mega-octicon octicon-alert"></span>
+              </div>
+              <div id="usernameErrorText">
+                Please enter a username.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="landingPageImagesBlock">
+          <div class="landingPageImage">
+            <img id="man1Image" src="images/man1.svg">
+          </div>
+          <div class="landingPageImage">
+            <img id="man2Image" src="images/man2.svg">
+          </div>
+          <div class="landingPageImage">
+            <img id="graduateMImage" src="images/graduateM.svg">
+          </div>
+          <div class="landingPageImage">
+            <img id="headsetMImage" src="images/headsetM.svg">
+          </div>
+          <div class="landingPageImage">
+            <img id="woman1Image" src="images/woman1.svg">
+          </div>
+          <div class="landingPageImage">
+            <img id="woman2Image" src="images/woman2.svg">
+          </div>
+          <div class="landingPageImage">
+            <img id="graduateFImage" src="images/graduateF.svg">
+          </div>
+          <div class="landingPageImage">
+            <img id="headsetFImage" src="images/headsetF.svg">
+          </div>
+
+          <div id="landingPageImageErrorBlock">
+            <div id="landingPageImageError">
+              <div id="imageErrorIcon">
+                <span class="mega-octicon octicon-alert"></span>
+              </div>
+              <div id="imageErrorText">
+                Please select an image.
+              </div>
+            </div>
+          </div>
         </div>
         <div id="landingPageSubmitBlock">
           <input type="submit">
@@ -30,7 +78,10 @@
 </div>
 <div id="pageWrapper">
   <div id="siteTitleBlock">
-    <h1>Blabber</h1>
+    <div id="siteTitle">
+      <img src="images/blabber_logo.png">
+      <h1>Blabber</h1>
+    </div>
   </div>
   <div id="chat">
     <header>
@@ -102,7 +153,9 @@
           <h3 id="sectionHeaderTitle">General</h3>
         </div>
         <div id="sectionMain">
+
           <!-- MESSAGES GO HERE -->
+
         </div>
       </section>
     </main>
@@ -115,6 +168,7 @@
       </div>
     </footer>
   </div>
+  <div id="credits">Icons made by <a href="http://www.flaticon.com/authors/simpleicon" title="SimpleIcon">SimpleIcon</a>, <a href="http://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 </div>
 
 <script src="bower_components/jquery/dist/jquery.min.js"></script>

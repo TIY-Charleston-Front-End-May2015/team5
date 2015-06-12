@@ -1,7 +1,7 @@
 /*********************
 VARIABLES
 *********************/
-
+$headerColor: #424242;
 $roboto: 'Roboto', sans, lightcyan;
 $bgColor: #060606;
 $defaultButtonBG: rgb(66,66,66);
@@ -67,13 +67,28 @@ GENERAL
 }
 
 #siteTitleBlock {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   padding: 20px 0;
 
+  #siteTitle {
+    position: relative;
+    left: 29px;
 
-  h1 {
-    font-size: 4rem;
-    font-weight: lighter;
+    img {
+      position: absolute;
+      left: -58px;
+      height: 69px;
+      top: 20px;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: lighter;
+      color: white;
+    }
   }
 }
 
@@ -90,6 +105,22 @@ GENERAL
 LANDING PAGE
 *********************/
 
+header {
+  height: 10%;
+  border-bottom: $bordersGray;
+  background-color: $defaultButtonBG;
+
+  > div {
+    height: 100%;
+    width: 100%;
+    display: none;
+  }
+
+  > div.active {
+    display: flex;
+  }
+}
+
 #landingPage {
   width: 100%;
   height: 100%;
@@ -100,10 +131,13 @@ LANDING PAGE
   justify-content: center;
   align-items: center;
 
+
   #landingPageBlock {
+    max-width: 500px;
 
     #landingPageTitleBlock {
       padding: 25px 0;
+      text-align: center;
       h1 {
         font-size: 4rem;
         font-weight: lighter;
@@ -118,6 +152,8 @@ LANDING PAGE
         flex-direction: column;
 
         #landingPageUsernameBlock {
+          position: relative;
+          margin-bottom: 25px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -132,10 +168,135 @@ LANDING PAGE
             background-color: black;
             padding: 10px;
             width: 100%;
+            border: 1px solid white;
 
             &:focus {
               outline: 0;
             }
+          }
+
+          #landingPageUsernameErrorBlock {
+            display: none;
+            position: absolute;
+            left: 104.75%;
+            top: 0;
+            height: 100%;
+            width: 125px;
+            border: 1px solid $dangerButtonBG;
+
+            #landingPageUsernameError {
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              #usernameErrorIcon {
+                height: 35%;
+                width: 100%;
+                background-color: $dangerButtonBG;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+
+              #usernameErrorText {
+                height: 65%;
+                font-size: .75rem;
+                padding: 2.5px;
+                text-align: center;
+                font-weight: lighter;
+                font-size: .7rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+          }
+
+          #landingPageUsernameErrorBlock.activeUsernameError {
+            display: block;
+          }
+        }
+
+        #landingPageImagesBlock {
+          width: 100%;
+          border: 1px solid white;
+          position: relative;
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+
+          .landingPageImage {
+            width: 22.5%;
+            cursor: pointer;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid black;
+            transition: all .25s ease;
+            -webkit-transition: all .25s ease;
+
+            &:hover {
+              border-color: $defaultButtonBG;
+            }
+          }
+
+          .selectedUserImage {
+            border-color: $successButtonBG;
+
+            &:hover {
+              border-color: $successButtonBG;
+            }
+          }
+
+          #landingPageImageErrorBlock {
+            display: none;
+            position: absolute;
+            left: 105%;
+            top: 0;
+            height: 100%;
+            width: 125px;
+            border: 1px solid $dangerButtonBG;
+            text-align: center;
+            align-items: center;
+
+            #landingPageImageError {
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              align-items: center;
+
+              > div {
+                display: flex;
+                align-items: center;
+              }
+
+              #imageErrorIcon {
+                height: 25%;
+                width: 100%;
+                background-color: $dangerButtonBG;
+                display: flex;
+                justify-content: center;
+
+                span {
+                  font-size: 1.75rem;
+
+                  &:before {
+                    color: white;
+                  }
+                }
+              }
+
+              #imageErrorText {
+                height: 75%;
+                font-weight: lighter;
+                color: $dangerButtonBG;
+              }
+            }
+          }
+
+          #landingPageImageErrorBlock.activeImageError {
+            display: flex;
           }
         }
 
@@ -155,6 +316,10 @@ LANDING PAGE
             &:hover {
               color: white;
               background-color: $successColor;
+            }
+
+            &:focus {
+              outline: 0;
             }
           }
         }
@@ -273,6 +438,7 @@ aside {
 
 #asideMain {
   height: 90%;
+  border: 1px solid black;
 }
 
 .status {
@@ -342,6 +508,7 @@ section {
   height: 90%;
   overflow: scroll;
   padding-bottom: 12.5px;
+  background-color: #888888;
 }
 
 /*********************
@@ -352,6 +519,7 @@ MESSAGE
   display: flex;
   flex-wrap: wrap;
   padding: 12.5px 0 0 0;
+  background-color: #888888;
 
   &:last-child {
     .messageBorderBlock {
@@ -391,13 +559,29 @@ MESSAGE
 
 .messageContent {
   width: 72.5%;
+  height: auto;
+  background-color: #CCCCCC;
+  border-radius: 4px;
+  box-shadow: 3px 3px 0px 0px black;
+
 }
 
 .messageContentTime {
   color: $successColor;
   font-weight: lighter;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   margin-bottom: 5px;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+.messageContentTimeBlock {
+  font-size: .5rem;
+}
+
+.messageContentText {
+  margin-left: 2%;
+  margin-right: 3%;
 }
 
 .messageDelete {
@@ -453,6 +637,8 @@ footer {
   border-top: 1px solid $bordersGray;
   background-color: $defaultButtonBG;
   color: black;
+  border-top: 1px solid black;
+  box-shadow: 0px -5px 5px 0px black;
 
 }
 
@@ -494,5 +680,21 @@ footer {
       background-color: $successButtonBG;
       color: $textColorWhite;
     }
+  }
+}
+
+/*********************
+CREDITS
+*********************/
+
+#credits {
+  font-size: .5rem;
+  color: gray;
+  padding: 25px 0;
+  text-align: center;
+
+  > a {
+    color: gray;
+    text-decoration: underline;
   }
 }

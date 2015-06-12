@@ -1,4 +1,5 @@
-var $username = "Username";
+var $username;
+var $userImage;
 
 $(document).ready(function(){
   page.init();
@@ -22,7 +23,16 @@ var page = {
 
 
   initEvents: function (event) {
+
     $('#messageForm').on('submit', page.addMessage);
+
+    $('#landingPageImagesBlock').on('click', '.landingPageImage', function(e){
+      e.preventDefault();
+      $(this).siblings().removeClass('selectedUserImage');
+      $(this).addClass('selectedUserImage');
+      console.log($(this).html().trim());
+      $userImage = $(this).html().trim();
+    });
 
     $('#sectionMain').on('click', '.messageDeleteCircle', function(e){
       e.preventDefault();
@@ -37,13 +47,26 @@ var page = {
 
     $('#landingPageForm').on('submit', function(e) {
       e.preventDefault();
-      $username = $('#landingFormUsername').val();
-      $('#landingPage').fadeOut();
+      if ($userImage !== undefined && $('#landingFormUsername').val().trim().length > 0) {
+        $username = $('#landingFormUsername').val();
+        $('#landingPage').fadeOut();
+        $('#landingPageImageErrorBlock').removeClass('activeImageError');
+        $('#landingPageUsernameErrorBlock').removeClass('activeUsernameError');
+      } else if ($userImage === undefined && $('#landingFormUsername').val().trim().length === 0) {
+        $('#landingPageImageErrorBlock').addClass('activeImageError');
+        $('#landingPageUsernameErrorBlock').addClass('activeUsernameError');
+      } else if ($userImage === undefined && $('#landingFormUsername').val().trim().length > 0) {
+        $('#landingPageImageErrorBlock').addClass('activeImageError');
+        $('#landingPageUsernameErrorBlock').removeClass('activeUsernameError');
+      } else {
+        $('#landingPageUsernameErrorBlock').addClass('activeUsernameError');
+        $('#landingPageImageErrorBlock').removeClass('activeImageError');
+      }
     });
 
     // setInterval(function() {
-    //    page.updateTime();
-    // }, 1000);
+    //   page.loadMessages();
+    // }, 2500);
   },
 
   addOneMessageToDOM: function(message) {
@@ -59,7 +82,8 @@ var page = {
     url: page.url,
     method: 'GET',
     success: function (data) {
-      console.log(data);
+
+      // console.log(data);
       page.addAllMessagesToDOM(data.reverse());
       $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
     },
@@ -94,7 +118,6 @@ var page = {
     method: 'PUT',
     data: editedMessage,
     success: function (data) {
-/////need to determine where?/////
       $('.message').html('');
       page.loadMessages();
 
@@ -119,6 +142,7 @@ var page = {
 
   addMessage: function(event) {
     event.preventDefault();
+
     var $attachUsername = $username;
     if ($('#messageInput').val().trim().length > 0) {
       var newMessage = {
@@ -130,6 +154,7 @@ var page = {
       page.createMessage(newMessage);
     } else {
       $('#messageInput').val("");
+
     }
   },
 
