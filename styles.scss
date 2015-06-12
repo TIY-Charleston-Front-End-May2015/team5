@@ -2,12 +2,7 @@
 VARIABLES
 *********************/
 
-$titlegray: #E5D0D0;
-$inactivegray: #DBDBDB;
-$bggray: #F5F5F5;
-$darkgray: #79CBB9;
-$fontblack: #535353;
-$roboto: 'Roboto', sans, #fff;
+$roboto: 'Roboto', sans, lightcyan;
 $bgColor: #060606;
 $defaultButtonBG: rgb(66,66,66);
 $primaryButtonBG: rgb(42, 159, 214);
@@ -15,9 +10,11 @@ $successButtonBG: rgb(119, 179, 0);
 $infoButtonBG: rgb(153, 51, 204);
 $warningButtonBG: rgb(255, 136, 0);
 $dangerButtonBG: rgb(204, 0, 0);
-$color: rgb(255, 255, 255);
 $pageBG: rgb(6, 6, 6);
-$aLinkColor: #2a9fd6;
+$textColorWhite: rgb(255, 255, 255);
+$panelContentColor: #8888A0;
+$aLinkColorBlue: #2a9fd6;
+$inputFont: #888888;
 /*********************
 SETUP
 *********************/
@@ -33,7 +30,7 @@ html {
 
 body {
   background-color: $bgColor;
-  color: $fontblack;
+  color: $textColorWhite;
   font-family: $roboto;
 }
 
@@ -52,6 +49,7 @@ img {
 }
 
 a {
+  color: $aLinkColorBlue;
   text-decoration: none;
 }
 
@@ -90,6 +88,7 @@ HEADER
 header {
   height: 10%;
   border-bottom: 1px solid gray;
+  background-color: $defaultButtonBG;
 
   > div {
     height: 100%;
@@ -131,8 +130,8 @@ header {
 
       a {
         font-size: .75rem;
-        color: $fontblack;
-        text-decoration: underline;
+/*         color: $aLinkColorBlue;
+text-decoration: underline; */
       }
     }
   }
@@ -223,8 +222,6 @@ header {
           display: flex;
           justify-content: center;
           align-items: center;
-
-
 
           span {
             &:before {
@@ -403,6 +400,7 @@ aside {
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid gray;
+  background-color: $primaryButtonBG;
 }
 
 #asideMain {
@@ -464,6 +462,7 @@ section {
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid gray;
+  background-color: $primaryButtonBG;
 }
 
 #sectionHeaderTitle {
@@ -539,6 +538,7 @@ MESSAGE
 
 .messageDeleteCircle {
   position: relative;
+  cursor: pointer;
   width: 25px;
   height: 25px;
   border: 1px solid gray;
@@ -571,6 +571,7 @@ footer {
   height: 12%;
   border-top: 1px solid gray;
   background-color: $defaultButtonBG;
+  color: black;
 
 }
 
@@ -602,5 +603,8 @@ footer {
   #messageSubmit {
     width: 10%;
     font-weight: lighter;
+    background-color: $successButtonBG;
+    color: $textColorWhite;
+
   }
 }
