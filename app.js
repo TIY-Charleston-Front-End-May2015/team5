@@ -61,6 +61,7 @@ var page = {
         $('#landingPageImageErrorBlock').removeClass('activeImageError');
         $('#landingPageUsernameErrorBlock').removeClass('activeUsernameError');
         page.loadTemplate("loggedInLeftBlock", userInfoArray, $('#loggedInLeft'));
+        page.disableDeleteCircles();
 
       } else if ($userImage === undefined && $('#landingFormUsername').val().trim().length === 0) {
         $('#landingPageImageErrorBlock').addClass('activeImageError');
@@ -92,12 +93,8 @@ var page = {
     url: page.url,
     method: 'GET',
     success: function (data) {
+      console.log('DATA: ', data);
       page.addAllMessagesToDOM(data.reverse());
-      $('.message').each(function(idx, el, arr){
-        if ($(el).find('.messageInfoName').text().trim() !== $username) {
-          $(el).find('.messageDelete').hide();
-        }
-      });
       $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
     },
     error: function (err) {
@@ -198,6 +195,26 @@ var page = {
       console.log('One messageContentTimeBlock');
       var momentTime = moment($('.messageContentTimeBlock').text()).fromNow();
       $('.messageContentTimeBlock').text(momentTime);
+    });
+  },
+  disableDeleteCircles: function() {
+    $.ajax({
+      url: page.url,
+      method: 'GET',
+      success: function (data) {
+        var authorsNotEqual = _.reject(data, {author: $username});
+        console.log(authorsNotEqual);
+        for (var i = 0; i < authorsNotEqual.length; i++) {
+          $('.message').each(function(idx, el, arr){
+             if (authorsNotEqual[i].author === $(el).find('.messageInfoName').text().trim()) {
+               $(el).find('.messageDeleteCircle').hide();
+             }
+          });
+        };
+      },
+      error: function (err) {
+
+      }
     });
   }
 };
