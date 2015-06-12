@@ -116,9 +116,9 @@ header {
       justify-content: center;
 
       img {
-        height: 40px;
-        width: 40px;
-        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        
       }
     }
 
@@ -171,6 +171,10 @@ header {
               width: 90%;
               height: 100%;
               margin: 0 auto;
+            }
+
+            >input[type=text] {
+              font-size: .75rem;
             }
           }
         }
