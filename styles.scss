@@ -86,6 +86,101 @@ GENERAL
 }
 
 /*********************
+LANDING PAGE
+*********************/
+
+
+header {
+  height: 10%;
+  border-bottom: $bordersGray;
+  background-color: $defaultButtonBG;
+
+  > div {
+    height: 100%;
+    width: 100%;
+    display: none;
+  }
+
+  > div.active {
+    display: flex;
+  }
+}
+
+#landingPage {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  #landingPageBlock {
+
+    #landingPageTitleBlock {
+      padding: 25px 0;
+      h1 {
+        font-size: 4rem;
+        font-weight: lighter;
+      }
+    }
+
+    #landingPageFormBlock {
+
+
+      #landingPageForm {
+        display: flex;
+        flex-direction: column;
+
+        #landingPageUsernameBlock {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          > label {
+            padding: 15px 0;
+            font-weight: bolder;
+            letter-spacing: 0.08rem;
+          }
+
+          > input {
+            background-color: black;
+            padding: 10px;
+            width: 100%;
+
+            &:focus {
+              outline: 0;
+            }
+          }
+        }
+
+        #landingPageSubmitBlock {
+          padding: 15px 0;
+
+          > input {
+            width: 100%;
+            padding: 10px;
+            background-color: black;
+            border: 1px solid $successColor;
+            font-weight: lighter;
+            color: $successColor;
+            transition: all .25s ease;
+            -webkit-transition: all .25s ease;
+
+            &:hover {
+              color: white;
+              background-color: $successColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*********************
 HEADER
 *********************/
 
@@ -105,240 +200,21 @@ header {
   }
 }
 
-#headerLoggedOutBlock {
-  justify-content: space-between;
-  position: relative;
-
-  #loggedOutLeft {
-    display: flex;
-    width: 25%;
-
-    #loggedOutLeftLogo {
-      width: 30%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        height: 50px;
-        width: 50px;
-
-      }
-    }
-
-    #loggedOutLeftCreate {
-      width: 70%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-
-      a {
-        font-size: .75rem;
-/*         color: $aLinkColorBlue;
-text-decoration: underline; */
-      }
-    }
-  }
-
-  #loggedOutRight {
-    width: 75%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-
-    #loggedOutRightForm {
-      width: 75%;
-      height: 80%;
-      display: flex;
-      align-items: center;
-
-      #logInForm {
-        height: 100%;
-        display: flex;
-
-        > div {
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-
-          > div {
-            height: 50%;
-            text-align: center;
-
-            > label {
-              font-size: .75rem;
-            }
-
-            > input {
-              width: 90%;
-              height: 100%;
-              margin: 0 auto;
-            }
-
-            >input[type=text] {
-              font-size: .75rem;
-            }
-          }
-        }
-
-        #logInFormUsernameBlock {
-          width: 40%;
-        }
-
-        #logInFormPasswordBlock {
-          width: 40%;
-        }
-
-        #logInFormSubmitBlock {
-          width: 20%;
-          height: 100%;
-
-          > input {
-            height: 100%;
-            background-color: white;
-            border: 1px solid $successColor;
-            color: $successColor;
-            transition: all .25s ease;
-            -webkit-transition: all .25s ease;
-
-            &:hover {
-              color: white;
-              background-color: $successColor;
-            }
-          }
-        }
-      }
-    }
-
-    #loggedOutRightError {
-      width: 25%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      #error {
-        display: none;
-        background-color: $dangerButtonBG;
-        width: 90%;
-        height: 80%;
-
-        #errorSymbolBlock {
-          height: 50%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          span {
-            &:before {
-              color: white;
-              font-size: .9rem;
-            }
-          }
-        }
-
-        #errorTextBlock {
-          height: 50%;
-          color: white;
-          font-size: .65rem;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-
-      #error.activeError {
-        display: block;
-      }
-    }
-  }
-
-  #loggedOutCreate {
-    position: absolute;
-    background: lightgray;
-    left: 0;
-    top: 100%;
-    width: 50%;
-    padding: 20px 0;
-    display: none;
-
-    #createForm {
-      width: 80%;
-      margin: 0 auto;
-
-      > div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
-
-        &:last-child {
-          margin-bottom: 0;
-        }
-
-        > div {
-          width: 60%;
-
-          &:first-child {
-            width: 40%
-          }
-
-          > input {
-            width: 100%;
-          }
-
-          >input[type=submit] {
-            background-color: white;
-            color: lightgreen;
-            border: 1px solid $successColor;
-            transition: all .25s ease;
-            -webkit-transition: all .25s ease;
-
-            &:hover {
-              color: white;
-              background-color: $successColor;
-            }
-          }
-        }
-      }
-    }
-  }
-
-  #loggedOutCreate.activeCreate {
-    display: block;
-  }
-}
-
 #headerLoggedInBlock {
+
   #loggedInLeft {
-    width: 7.5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    img {
-      height: 40px;
-      width: 40px;
-      border-radius: 50%;
-    }
-  }
-
-  #loggedInMiddle {
     width: 85%;
     height: 100%;
 
-    #loggedInMiddleBlock {
+    #loggedInLeftBlock {
       height: 100%;
-      width: 40%;
-      margin: 0 auto;
+      width: 30%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
 
-      #loggedInMiddleImage {
-        width: 50%;
+      #loggedInLeftImage {
+        width: 28%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -350,7 +226,7 @@ text-decoration: underline; */
         }
       }
 
-      #loggedInMiddleName {
+      #loggedInLeftName {
         width: 50%;
         display: flex;
         justify-content: center;
@@ -361,15 +237,16 @@ text-decoration: underline; */
 
   #loggedInRight {
     height: 100%;
+    width: 14.5%;
     display: flex;
     justify-content: center;
     align-items: center;
 
     button {
       width: 95%;
-      height: 70%;
+      height: 50%;
       font-size: .6rem;
-      background-color: white;
+      background-color: $defaultButtonBG;
       color: red;
       border: 1px solid red;
       transition: all .25s ease;
@@ -571,11 +448,18 @@ MESSAGE
   cursor: pointer;
   width: 25px;
   height: 25px;
-  border: $dangerButtonBG;
+  border: 1px solid $dangerButtonBG;
   border-radius: 50%;
   font-weight: lighter;
   font-size: .75rem;
   color: $dangerButtonBG;
+  -webkit-transition: all .25s ease;
+  transition: all .25s ease;
+
+  &:hover {
+    background-color: $dangerButtonBG;
+    color: $textColorWhite;
+  }
 }
 
 .messageDeleteX {
@@ -591,7 +475,6 @@ MESSAGE
   width: 85%;
   height: 12.5px;
   margin: 0 auto;
-  /* border-bottom: $bordersGray; */
   -webkit-box-shadow: 0px 14px 5px -5px rgba(136,136,136,0.25);
   -moz-box-shadow: 0px 14px 5px -5px rgba(136,136,136,0.25);
   box-shadow: 0px 14px 5px -5px rgba(136,136,136,0.25);
@@ -639,8 +522,15 @@ footer {
   #messageSubmit {
     width: 10%;
     font-weight: lighter;
-    background-color: $successButtonBG;
-    color: $textColorWhite;
+    border: 1px solid $successButtonBG;
+    background-color: $defaultButtonBG;
+    color: $successButtonBG;
+    -webkit-transition: all .25s ease;
+    transition: all .25s ease;
 
+    &:hover {
+      background-color: $successButtonBG;
+      color: $textColorWhite;
+    }
   }
 }

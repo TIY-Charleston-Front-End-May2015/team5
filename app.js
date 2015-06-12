@@ -1,3 +1,5 @@
+var $username = "Username";
+
 $(document).ready(function(){
   page.init();
 });
@@ -5,7 +7,7 @@ $(document).ready(function(){
 
 var page = {
 
-  url: "http://tiyfee-calweb.rhcloud.com/collections/blabber",
+  url: "http://tiy-fee-rest.herokuapp.com/collections/blabber",
 
   init: function () {
     page.initStyling();
@@ -21,11 +23,7 @@ var page = {
 
   initEvents: function (event) {
 
-    $('#messageForm').on('submit', page.addMessage)
-    $('#logInForm').on('submit', function(e){
-      e.preventDefault();
-      $('#error').addClass('activeError');
-    })
+    $('#messageForm').on('submit', page.addMessage);
 
     $('#sectionMain').on('click', '.messageDeleteCircle', function(e){
       e.preventDefault();
@@ -38,9 +36,14 @@ var page = {
       $('#loggedOutCreate').toggleClass('activeCreate');
     });
 
+    $('#landingPageForm').on('submit', function(e) {
+      e.preventDefault();
+      $username = $('#landingFormUsername').val();
+      $('#landingPage').fadeOut();
+    });
 
     // setInterval(function() {
-    //   page.updateTime();
+    //    page.updateTime();
     // }, 1000);
   },
 
@@ -58,9 +61,9 @@ var page = {
     method: 'GET',
     success: function (data) {
 
+      console.log(data);
       page.addAllMessagesToDOM(data.reverse());
       $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
-      // page.updateTime();
     },
     error: function (err) {
 
@@ -118,13 +121,12 @@ var page = {
   addMessage: function(event) {
     event.preventDefault();
 
+    var $attachUsername = $username;
     if ($('#messageInput').val().trim().length > 0) {
-      // var messageTime = ()
       var newMessage = {
         content: $('#messageInput').val(),
-        timestamp: page.getCurrentTime()
-        // messageId: $('.message').data('id'),
-        // time: $()
+        timestamp: page.getCurrentTime(),
+        author: $attachUsername
       }
       console.log(newMessage);
       page.createMessage(newMessage);
