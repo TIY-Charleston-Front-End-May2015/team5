@@ -1,5 +1,5 @@
-var $username = "Username";
-
+var $username;
+var $userImage;
 $(document).ready(function(){
   page.init();
 });
@@ -17,13 +17,21 @@ var page = {
 
   initStyling: function () {
     page.loadMessages();
-
   },
 
 
   initEvents: function (event) {
 
     $('#messageForm').on('submit', page.addMessage);
+
+    $('#landingPageImagesBlock').on('click', '.landingPageImage', function(e){
+      e.preventDefault();
+      console.log('hello');
+      $(this).siblings().removeClass('selectedUserImage');
+      $(this).addClass('selectedUserImage');
+      console.log($(this).html().trim());
+      $userImage = $(this).html().trim();
+    });
 
     $('#sectionMain').on('click', '.messageDeleteCircle', function(e){
       e.preventDefault();
@@ -38,13 +46,27 @@ var page = {
 
     $('#landingPageForm').on('submit', function(e) {
       e.preventDefault();
-      $username = $('#landingFormUsername').val();
-      $('#landingPage').fadeOut();
+      if ($userImage !== undefined && $('#landingFormUsername').val().trim().length > 0) {
+        $username = $('#landingFormUsername').val();
+        $('#landingPage').fadeOut();
+        $('#landingPageImageErrorBlock').removeClass('activeImageError');
+        $('#landingPageUsernameErrorBlock').removeClass('activeUsernameError');
+      } else if ($userImage === undefined && $('#landingFormUsername').val().trim().length === 0) {
+        $('#landingPageImageErrorBlock').addClass('activeImageError');
+        $('#landingPageUsernameErrorBlock').addClass('activeUsernameError');
+      } else if ($userImage === undefined && $('#landingFormUsername').val().trim().length > 0) {
+        $('#landingPageImageErrorBlock').addClass('activeImageError');
+        $('#landingPageUsernameErrorBlock').removeClass('activeUsernameError');
+      } else {
+        $('#landingPageUsernameErrorBlock').addClass('activeUsernameError');
+        $('#landingPageImageErrorBlock').removeClass('activeImageError');
+      }
     });
 
     // setInterval(function() {
     //    page.loadMessages();
     // }, 2000);
+
   },
 
   addOneMessageToDOM: function(message) {
@@ -60,9 +82,10 @@ var page = {
     url: page.url,
     method: 'GET',
     success: function (data) {
-
-      console.log(data);
+      // console.log(data);
+      var authorsNotEqual = _.reject(('data'), {author: $username});
       page.addAllMessagesToDOM(data.reverse());
+      authorsNotEqual.find('.messageDeleteCircle').hide();
     },
     error: function (err) {
 
@@ -125,7 +148,8 @@ var page = {
       var newMessage = {
         content: $('#messageInput').val(),
         timestamp: page.getCurrentTime(),
-        author: $attachUsername
+        author: $attachUsername,
+        userIcon: $userImage
       }
       console.log(newMessage);
       page.createMessage(newMessage);
@@ -134,12 +158,6 @@ var page = {
 
     }
   },
-
-  noDelete: function() {
-    
-  }
-
-
 
   navPages: function (event) {
   event.preventDefault();

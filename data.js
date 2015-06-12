@@ -5,7 +5,7 @@ var templates = {};
         "<div class='message' data-id='<%=_id%>'>",
           "<div class='messageInfo'>",
              "<div class='messageInfoImage'>",
-               "<img src='http://placehold.it/100x100'>",
+             "<%= userIcon %>",
              "</div>",
              "<div class='messageInfoName'>",
                "<span><%= author %></span>",
@@ -36,7 +36,7 @@ var userStatus = [
 
     "<div class='status'>",
      "<div class='statusImage'>",
-        "<%=staus%>",
+        "<%=status%>",
      "</div>",
      "<div class='statusName'>",
        "Name",
