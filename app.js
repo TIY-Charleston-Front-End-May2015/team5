@@ -20,8 +20,26 @@ var page = {
 
 
   initEvents: function (event) {
-    $('#messageForm').on('submit', page.addMessage)
+    $('#messageForm').on('submit', page.addMessage);
+    $('#logInForm').on('submit', function(e){
+      e.preventDefault();
+      $('#error').addClass('activeError');
+    })
 
+    $('#sectionMain').on('click', '.messageDeleteCircle', function(e){
+      e.preventDefault();
+      var deleteId = $(this).closest('.message').data('id');
+      page.deleteMessage(deleteId);
+    });
+
+    $('header').on('click', '#loggedOutLeftCreate > a', function(e){
+      e.preventDefault();
+      $('#loggedOutCreate').toggleClass('activeCreate');
+    });
+
+    // setInterval(function() {
+    //   page.updateTime();
+    // }, 1000);
   },
 
   addOneMessageToDOM: function(message) {
@@ -37,10 +55,9 @@ var page = {
     url: page.url,
     method: 'GET',
     success: function (data) {
-      ///need to add here
-      console.log("success");
-      console.log(data);
       page.addAllMessagesToDOM(data.reverse());
+      $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
+      // page.updateTime();
     },
     error: function (err) {
 
@@ -55,9 +72,7 @@ var page = {
       method: 'POST',
       data: newMessage,
       success: function (data) {
-
         page.addOneMessageToDOM(data);
-        console.log("success!!: ", data);
         $('#messageInput').val("");
         $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
       },
@@ -85,17 +100,14 @@ var page = {
 },
 
 
-  deletePost: function(e) {
-  e.preventDefault();
-
+  deleteMessage: function(deleteId) {
   $.ajax({
-    url: page.url + "/" + $(this).closest('.message').data('id'),
+    url: page.url + "/" + deleteId,
     method: 'DELETE',
     success: function (data) {
-
-      $('.message').html('');
+      $('#sectionMain').html('');
       page.loadMessages();
-    },
+    }
   });
 },
 
@@ -103,15 +115,19 @@ var page = {
 
   addMessage: function(event) {
     event.preventDefault();
-    // var messageTime = ()
-    var newMessage = {
-      content: $('#messageInput').val(),
-      // messageId: $('.message').data('id'),
-      // time: $()
+    if ($('#messageInput').val().trim().length > 0) {
+      // var messageTime = ()
+      var newMessage = {
+        content: $('#messageInput').val(),
+        timestamp: page.getCurrentTime()
+        // messageId: $('.message').data('id'),
+        // time: $()
+      }
+      console.log(newMessage);
+      page.createMessage(newMessage);
+    } else {
+      $('#messageInput').val("");
     }
-    console.log(newMessage);
-    page.createMessage(newMessage);
-
   },
 
   navPages: function (event) {
@@ -131,6 +147,17 @@ var page = {
   getTemplate: function(name) {
     return templates[name];
   },
+  getCurrentTime: function() {
+    var time = moment().format('hh:mm:ss');
+    return time;
+  },
+  updateTime: function() {
+    $('.messageContentTimeBlock').each(function(){
+      console.log('One messageContentTimeBlock');
+      var momentTime = moment($('.messageContentTimeBlock').text()).fromNow();
+      $('.messageContentTimeBlock').text(momentTime);
+    });
+  }
 
 
 };

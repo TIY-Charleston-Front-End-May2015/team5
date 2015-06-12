@@ -14,7 +14,7 @@ var templates = {};
            "<div class='messageContent'>",
              "<div class='messageContentTime'>",
                "<div class='messageContentTimeBlock'>",
-                 "6 minutes ago",
+                 "<%= timestamp %>",
                "</div>",
              "</div>",
              "<div class='messageContentText'>",

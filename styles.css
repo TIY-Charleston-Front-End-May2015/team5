@@ -79,9 +79,8 @@ header {
       align-items: center;
       justify-content: center; }
       #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftLogo img {
-        height: 40px;
-        width: 40px;
-        border-radius: 50%; }
+        height: 50px;
+        width: 50px; }
     #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftCreate {
       width: 70%;
       display: flex;
@@ -119,6 +118,8 @@ text-decoration: underline; */ }
               width: 90%;
               height: 100%;
               margin: 0 auto; }
+            #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm > div > div > input[type=text] {
+              font-size: .75rem; }
         #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormUsernameBlock {
           width: 40%; }
         #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormPasswordBlock {
