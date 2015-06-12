@@ -13,8 +13,8 @@ html {
 
 body {
   background-color: #060606;
-  color: #535353;
-  font-family: "Roboto", sans, #fff; }
+  color: white;
+  font-family: "Roboto", sans, lightcyan; }
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -28,6 +28,7 @@ img {
   max-width: 100%; }
 
 a {
+  color: #2a9fd6;
   text-decoration: none; }
 
 /*********************
@@ -57,7 +58,8 @@ HEADER
 *********************/
 header {
   height: 10%;
-  border-bottom: 1px solid gray; }
+  border-bottom: 1px solid gray;
+  background-color: #424242; }
   header > div {
     height: 100%;
     width: 100%;
@@ -87,8 +89,8 @@ header {
       justify-content: flex-start; }
       #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftCreate a {
         font-size: .75rem;
-        color: #535353;
-        text-decoration: underline; }
+        /*         color: $aLinkColorBlue;
+text-decoration: underline; */ }
   #headerLoggedOutBlock #loggedOutRight {
     width: 75%;
     height: 100%;
@@ -271,7 +273,8 @@ aside {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid gray; }
+  border-bottom: 1px solid gray;
+  background-color: #2a9fd6; }
 
 #asideMain {
   height: 90%; }
@@ -318,7 +321,8 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid gray; }
+  border-bottom: 1px solid gray;
+  background-color: #2a9fd6; }
 
 #sectionMain {
   height: 90%;
@@ -402,7 +406,8 @@ FOOTER
 footer {
   height: 12%;
   border-top: 1px solid gray;
-  background-color: #424242; }
+  background-color: #424242;
+  color: black; }
 
 #footerBlock {
   width: 80%;
@@ -422,4 +427,6 @@ footer {
       outline: 0; }
   #messageForm #messageSubmit {
     width: 10%;
-    font-weight: lighter; }
+    font-weight: lighter;
+    background-color: #77b300;
+    color: white; }
