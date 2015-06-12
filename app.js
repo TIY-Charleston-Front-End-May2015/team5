@@ -41,7 +41,6 @@ var page = {
     url: page.url,
     method: 'GET',
     success: function (data) {
-      ///need to add here
       console.log("success");
       console.log(data);
       page.addAllMessagesToDOM(data.reverse());
@@ -79,7 +78,6 @@ var page = {
     method: 'PUT',
     data: editedMessage,
     success: function (data) {
-/////need to determine where?/////
       $('.message').html('');
       page.loadMessages();
 
@@ -109,8 +107,6 @@ var page = {
     event.preventDefault();
     // var messageTime = ()
     var newMessage = {
-
-      content: $('#messageInput').val()
 
       content: $('#messageInput').val(),
 
