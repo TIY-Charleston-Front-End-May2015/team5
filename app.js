@@ -22,6 +22,7 @@ var page = {
 
 
   initEvents: function (event) {
+
     $('#messageForm').on('submit', page.addMessage);
 
     $('#sectionMain').on('click', '.messageDeleteCircle', function(e){
@@ -59,6 +60,7 @@ var page = {
     url: page.url,
     method: 'GET',
     success: function (data) {
+
       console.log(data);
       page.addAllMessagesToDOM(data.reverse());
       $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
@@ -94,7 +96,6 @@ var page = {
     method: 'PUT',
     data: editedMessage,
     success: function (data) {
-/////need to determine where?/////
       $('.message').html('');
       page.loadMessages();
 
@@ -119,6 +120,7 @@ var page = {
 
   addMessage: function(event) {
     event.preventDefault();
+
     var $attachUsername = $username;
     if ($('#messageInput').val().trim().length > 0) {
       var newMessage = {
@@ -130,6 +132,7 @@ var page = {
       page.createMessage(newMessage);
     } else {
       $('#messageInput').val("");
+
     }
   },
 

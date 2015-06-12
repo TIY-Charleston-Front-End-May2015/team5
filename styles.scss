@@ -1,7 +1,7 @@
 /*********************
 VARIABLES
 *********************/
-
+$headerColor: #424242;
 $roboto: 'Roboto', sans, lightcyan;
 $bgColor: #060606;
 $defaultButtonBG: rgb(66,66,66);
@@ -89,6 +89,23 @@ GENERAL
 LANDING PAGE
 *********************/
 
+
+header {
+  height: 10%;
+  border-bottom: $bordersGray;
+  background-color: $defaultButtonBG;
+
+  > div {
+    height: 100%;
+    width: 100%;
+    display: none;
+  }
+
+  > div.active {
+    display: flex;
+  }
+}
+
 #landingPage {
   width: 100%;
   height: 100%;
@@ -98,6 +115,7 @@ LANDING PAGE
   display: flex;
   justify-content: center;
   align-items: center;
+
 
   #landingPageBlock {
 
@@ -272,6 +290,7 @@ aside {
 
 #asideMain {
   height: 90%;
+  border: 1px solid black;
 }
 
 .status {
@@ -341,6 +360,7 @@ section {
   height: 90%;
   overflow: scroll;
   padding-bottom: 12.5px;
+  background-color: #888888;
 }
 
 /*********************
@@ -351,6 +371,7 @@ MESSAGE
   display: flex;
   flex-wrap: wrap;
   padding: 12.5px 0 0 0;
+  background-color: #888888;
 
   &:last-child {
     .messageBorderBlock {
@@ -390,13 +411,29 @@ MESSAGE
 
 .messageContent {
   width: 72.5%;
+  height: auto;
+  background-color: #CCCCCC;
+  border-radius: 4px;
+  box-shadow: 3px 3px 0px 0px black;
+
 }
 
 .messageContentTime {
   color: $successColor;
   font-weight: lighter;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   margin-bottom: 5px;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+.messageContentTimeBlock {
+  font-size: .5rem;
+}
+
+.messageContentText {
+  margin-left: 2%;
+  margin-right: 3%;
 }
 
 .messageDelete {
@@ -452,6 +489,8 @@ footer {
   border-top: 1px solid $bordersGray;
   background-color: $defaultButtonBG;
   color: black;
+  border-top: 1px solid black;
+  box-shadow: 0px -5px 5px 0px black;
 
 }
 
