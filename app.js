@@ -26,6 +26,10 @@ var page = {
 
     $('#messageForm').on('submit', page.addMessage);
 
+    $('#logOutButton').on('click', function(){
+      location.reload();
+    });
+
     $('#landingPageImagesBlock').on('click', '.landingPageImage', function(e){
       e.preventDefault();
       $(this).siblings().removeClass('selectedUserImage');
@@ -49,9 +53,15 @@ var page = {
       e.preventDefault();
       if ($userImage !== undefined && $('#landingFormUsername').val().trim().length > 0) {
         $username = $('#landingFormUsername').val();
+        var userInfoArray = {
+          username: $username,
+          userIcon: $userImage
+        }
         $('#landingPage').fadeOut();
         $('#landingPageImageErrorBlock').removeClass('activeImageError');
         $('#landingPageUsernameErrorBlock').removeClass('activeUsernameError');
+        page.loadTemplate("loggedInLeftBlock", userInfoArray, $('#loggedInLeft'));
+
       } else if ($userImage === undefined && $('#landingFormUsername').val().trim().length === 0) {
         $('#landingPageImageErrorBlock').addClass('activeImageError');
         $('#landingPageUsernameErrorBlock').addClass('activeUsernameError');
@@ -66,7 +76,7 @@ var page = {
 
     // setInterval(function() {
     //   page.loadMessages();
-    // }, 2500);
+    // }, 2000);
   },
 
   addOneMessageToDOM: function(message) {
@@ -82,9 +92,12 @@ var page = {
     url: page.url,
     method: 'GET',
     success: function (data) {
-
-      // console.log(data);
       page.addAllMessagesToDOM(data.reverse());
+      $('.message').each(function(idx, el, arr){
+        if ($(el).find('.messageInfoName').text().trim() !== $username) {
+          $(el).find('.messageDelete').hide();
+        }
+      });
       $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
     },
     error: function (err) {
@@ -148,7 +161,8 @@ var page = {
       var newMessage = {
         content: $('#messageInput').val(),
         timestamp: page.getCurrentTime(),
-        author: $attachUsername
+        author: $attachUsername,
+        userIcon: $userImage
       }
       console.log(newMessage);
       page.createMessage(newMessage);
@@ -186,6 +200,4 @@ var page = {
       $('.messageContentTimeBlock').text(momentTime);
     });
   }
-
-
 };
