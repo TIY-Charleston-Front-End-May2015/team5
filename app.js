@@ -43,8 +43,8 @@ var page = {
     });
 
     // setInterval(function() {
-    //    page.updateTime();
-    // }, 1000);
+    //    page.loadMessages();
+    // }, 2000);
   },
 
   addOneMessageToDOM: function(message) {
@@ -63,7 +63,6 @@ var page = {
 
       console.log(data);
       page.addAllMessagesToDOM(data.reverse());
-      $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
     },
     error: function (err) {
 
@@ -135,6 +134,12 @@ var page = {
 
     }
   },
+
+  noDelete: function() {
+    
+  }
+
+
 
   navPages: function (event) {
   event.preventDefault();
