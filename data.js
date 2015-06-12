@@ -8,7 +8,7 @@ var templates = {};
                "<img src='http://placehold.it/100x100'>",
              "</div>",
              "<div class='messageInfoName'>",
-               "<span>Name</span>",
+               "<span><%= author %></span>",
              "</div>",
            "</div>",
            "<div class='messageContent'>",

@@ -10,95 +10,37 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-
+<div id="landingPage" style="display: none">
+  <div id="landingPageBlock">
+    <div id="landingPageTitleBlock">
+      <h1>Blabber</h1>
+    </div>
+    <div id="landingPageFormBlock">
+      <form id="landingPageForm">
+        <div id="landingPageUsernameBlock">
+          <label for="landingFormUsername">Username: </label>
+          <input type="text" name="landingFormUsername" id="landingFormUsername">
+        </div>
+        <div id="landingPageSubmitBlock">
+          <input type="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <div id="pageWrapper">
   <div id="siteTitleBlock">
     <h1>Blabber</h1>
   </div>
   <div id="chat">
     <header>
-      <div id="headerLoggedOutBlock" class="active">
-        <div id="loggedOutLeft">
-          <div id="loggedOutLeftLogo">
-            <img src="images/Blabber_Logo.png">
-          </div>
-          <div id="loggedOutLeftCreate">
-            <a href="#">Create Account</a>
-          </div>
-        </div>
-        <div id="loggedOutRight">
-          <div id="loggedOutRightForm">
-            <form id="logInForm">
-              <div id="logInFormUsernameBlock">
-                <div>
-                  <label for="logInFormUsername">Username:</label>
-                </div>
-                <div>
-                  <input type="text" id="logInFormUsername" name="logInFormUsername">
-                </div>
-              </div>
-              <div id="logInFormPasswordBlock">
-                <div>
-                  <label for="logInFormPassword">Password:</label>
-                </div>
-                <div>
-                  <input type="password" id="logInFormPassword" name="logInFormPassword">
-                </div>
-              </div>
-              <div id="logInFormSubmitBlock">
-                <input type="submit" id="logInFormSubmit" value="Log In">
-              </div>
-            </form>
-          </div>
-          <div id="loggedOutRightError">
-            <div id="error" class="">
-              <div id="errorSymbolBlock">
-                <div id="errorSymbol">
-                  <span class="mega-octicon octicon-alert"></span>
-                </div>
-              </div>
-              <div id="errorTextBlock">
-                <div id="errorText">Error</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="loggedOutCreate" class="">
-          <form id="createForm">
-            <div id="createFormUsernameBlock">
-              <div>
-                <label for="createFormUsername">Username: </label>
-              </div>
-              <div>
-                <input type="text" id="createFormUsername" name="createFormUsername">
-              </div>
-            </div>
-            <div id="createFormPasswordBlock">
-              <div>
-                <label for="createFormPassword">Password: </label>
-              </div>
-              <div>
-                <input type="password" id="createFormPassword" name="createFormPassword">
-              </div>
-            </div>
-            <div id="createFormSubmitBlock">
-              <div>
-                <input type="submit" value="Create">
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div id="headerLoggedInBlock" class="">
+      <div id="headerLoggedInBlock" class="active">
         <div id="loggedInLeft">
-            <img src="http://placehold.it/100x100">
-        </div>
-        <div id="loggedInMiddle">
-          <div id="loggedInMiddleBlock">
-            <div id="loggedInMiddleImage">
+          <div id="loggedInLeftBlock">
+            <div id="loggedInLeftImage">
               <img src="http://placehold.it/100x100">
             </div>
-            <div id="loggedInMiddleName">
+            <div id="loggedInLeftName">
               Username
             </div>
           </div>

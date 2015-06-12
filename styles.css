@@ -54,6 +54,55 @@ GENERAL
   box-shadow: 0px 5px 20px 1px #535353; }
 
 /*********************
+LANDING PAGE
+*********************/
+#landingPage {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  #landingPage #landingPageBlock #landingPageTitleBlock {
+    padding: 25px 0; }
+    #landingPage #landingPageBlock #landingPageTitleBlock h1 {
+      font-size: 4rem;
+      font-weight: lighter; }
+  #landingPage #landingPageBlock #landingPageFormBlock #landingPageForm {
+    display: flex;
+    flex-direction: column; }
+    #landingPage #landingPageBlock #landingPageFormBlock #landingPageForm #landingPageUsernameBlock {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      #landingPage #landingPageBlock #landingPageFormBlock #landingPageForm #landingPageUsernameBlock > label {
+        padding: 15px 0;
+        font-weight: bolder;
+        letter-spacing: 0.08rem; }
+      #landingPage #landingPageBlock #landingPageFormBlock #landingPageForm #landingPageUsernameBlock > input {
+        background-color: black;
+        padding: 10px;
+        width: 100%; }
+        #landingPage #landingPageBlock #landingPageFormBlock #landingPageForm #landingPageUsernameBlock > input:focus {
+          outline: 0; }
+    #landingPage #landingPageBlock #landingPageFormBlock #landingPageForm #landingPageSubmitBlock {
+      padding: 15px 0; }
+      #landingPage #landingPageBlock #landingPageFormBlock #landingPageForm #landingPageSubmitBlock > input {
+        width: 100%;
+        padding: 10px;
+        background-color: black;
+        border: 1px solid #77b300;
+        font-weight: lighter;
+        color: #77b300;
+        transition: all .25s ease;
+        -webkit-transition: all .25s ease; }
+        #landingPage #landingPageBlock #landingPageFormBlock #landingPageForm #landingPageSubmitBlock > input:hover {
+          color: white;
+          background-color: #77b300; }
+
+/*********************
 HEADER
 *********************/
 header {
@@ -67,189 +116,44 @@ header {
   header > div.active {
     display: flex; }
 
-#headerLoggedOutBlock {
-  justify-content: space-between;
-  position: relative; }
-  #headerLoggedOutBlock #loggedOutLeft {
-    display: flex;
-    width: 25%; }
-    #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftLogo {
-      width: 30%;
-      display: flex;
-      align-items: center;
-      justify-content: center; }
-      #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftLogo img {
-        height: 50px;
-        width: 50px; }
-    #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftCreate {
-      width: 70%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start; }
-      #headerLoggedOutBlock #loggedOutLeft #loggedOutLeftCreate a {
-        font-size: .75rem;
-        /*         color: $aLinkColorBlue;
-text-decoration: underline; */ }
-  #headerLoggedOutBlock #loggedOutRight {
-    width: 75%;
-    height: 100%;
-    display: flex;
-    align-items: center; }
-    #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm {
-      width: 75%;
-      height: 80%;
-      display: flex;
-      align-items: center; }
-      #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm {
-        height: 100%;
-        display: flex; }
-        #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm > div {
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center; }
-          #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm > div > div {
-            height: 50%;
-            text-align: center; }
-            #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm > div > div > label {
-              font-size: .75rem; }
-            #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm > div > div > input {
-              width: 90%;
-              height: 100%;
-              margin: 0 auto; }
-            #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm > div > div > input[type=text] {
-              font-size: .75rem; }
-        #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormUsernameBlock {
-          width: 40%; }
-        #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormPasswordBlock {
-          width: 40%; }
-        #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormSubmitBlock {
-          width: 20%;
-          height: 100%; }
-          #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormSubmitBlock > input {
-            height: 100%;
-            background-color: white;
-            border: 1px solid #77b300;
-            color: #77b300;
-            transition: all 0.25s ease;
-            -webkit-transition: all 0.25s ease; }
-            #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormSubmitBlock > input:hover {
-              color: white;
-              background-color: #77b300; }
-    #headerLoggedOutBlock #loggedOutRight #loggedOutRightError {
-      width: 25%;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-      #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error {
-        display: none;
-        background-color: #cc0000;
-        width: 90%;
-        height: 80%; }
-        #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error #errorSymbolBlock {
-          height: 50%;
-          display: flex;
-          justify-content: center;
-          align-items: center; }
-          #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error #errorSymbolBlock span:before {
-            color: white;
-            font-size: .9rem; }
-        #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error #errorTextBlock {
-          height: 50%;
-          color: white;
-          font-size: .65rem;
-          display: flex;
-          justify-content: center;
-          align-items: center; }
-      #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error.activeError {
-        display: block; }
-  #headerLoggedOutBlock #loggedOutCreate {
-    position: absolute;
-    background: lightgray;
-    left: 0;
-    top: 100%;
-    width: 50%;
-    padding: 20px 0;
-    display: none; }
-    #headerLoggedOutBlock #loggedOutCreate #createForm {
-      width: 80%;
-      margin: 0 auto; }
-      #headerLoggedOutBlock #loggedOutCreate #createForm > div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px; }
-        #headerLoggedOutBlock #loggedOutCreate #createForm > div:last-child {
-          margin-bottom: 0; }
-        #headerLoggedOutBlock #loggedOutCreate #createForm > div > div {
-          width: 60%; }
-          #headerLoggedOutBlock #loggedOutCreate #createForm > div > div:first-child {
-            width: 40%; }
-          #headerLoggedOutBlock #loggedOutCreate #createForm > div > div > input {
-            width: 100%; }
-          #headerLoggedOutBlock #loggedOutCreate #createForm > div > div > input[type=submit] {
-            background-color: white;
-            color: lightgreen;
-            border: 1px solid #77b300;
-            transition: all 0.25s ease;
-            -webkit-transition: all 0.25s ease; }
-            #headerLoggedOutBlock #loggedOutCreate #createForm > div > div > input[type=submit]:hover {
-              color: white;
-              background-color: #77b300; }
-  #headerLoggedOutBlock #loggedOutCreate.activeCreate {
-    display: block; }
-
 #headerLoggedInBlock #loggedInLeft {
-  width: 7.5%;
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-  #headerLoggedInBlock #loggedInLeft img {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%; }
-
-#headerLoggedInBlock #loggedInMiddle {
   width: 85%;
   height: 100%; }
-  #headerLoggedInBlock #loggedInMiddle #loggedInMiddleBlock {
+  #headerLoggedInBlock #loggedInLeft #loggedInLeftBlock {
     height: 100%;
-    width: 40%;
-    margin: 0 auto;
+    width: 30%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center; }
-    #headerLoggedInBlock #loggedInMiddle #loggedInMiddleBlock #loggedInMiddleImage {
-      width: 50%;
+    #headerLoggedInBlock #loggedInLeft #loggedInLeftBlock #loggedInLeftImage {
+      width: 28%;
       display: flex;
       justify-content: center;
       align-items: center; }
-      #headerLoggedInBlock #loggedInMiddle #loggedInMiddleBlock #loggedInMiddleImage img {
+      #headerLoggedInBlock #loggedInLeft #loggedInLeftBlock #loggedInLeftImage img {
         height: 50px;
         width: 50px;
         border-radius: 50%; }
-    #headerLoggedInBlock #loggedInMiddle #loggedInMiddleBlock #loggedInMiddleName {
+    #headerLoggedInBlock #loggedInLeft #loggedInLeftBlock #loggedInLeftName {
       width: 50%;
       display: flex;
       justify-content: center;
       align-items: center; }
-
 #headerLoggedInBlock #loggedInRight {
   height: 100%;
+  width: 14.5%;
   display: flex;
   justify-content: center;
   align-items: center; }
   #headerLoggedInBlock #loggedInRight button {
     width: 95%;
-    height: 70%;
+    height: 50%;
     font-size: .6rem;
-    background-color: white;
+    background-color: #424242;
     color: red;
     border: 1px solid red;
-    transition: all 0.25s ease;
-    -webkit-transition: all 0.25s ease; }
+    transition: all .25s ease;
+    -webkit-transition: all .25s ease; }
     #headerLoggedInBlock #loggedInRight button:hover {
       background-color: #cc0000;
       color: white; }
@@ -385,11 +289,16 @@ MESSAGE
   cursor: pointer;
   width: 25px;
   height: 25px;
-  border: 1px solid #282828;
+  border: 1px solid #cc0000;
   border-radius: 50%;
   font-weight: lighter;
   font-size: .75rem;
-  color: #cc0000; }
+  color: #cc0000;
+  -webkit-transition: all .25s ease;
+  transition: all .25s ease; }
+  .messageDeleteCircle:hover {
+    background-color: #cc0000;
+    color: white; }
 
 .messageDeleteX {
   position: absolute;
@@ -403,7 +312,6 @@ MESSAGE
   width: 85%;
   height: 12.5px;
   margin: 0 auto;
-  /* border-bottom: $bordersGray; */
   -webkit-box-shadow: 0px 14px 5px -5px rgba(136, 136, 136, 0.25);
   -moz-box-shadow: 0px 14px 5px -5px rgba(136, 136, 136, 0.25);
   box-shadow: 0px 14px 5px -5px rgba(136, 136, 136, 0.25); }
@@ -436,27 +344,13 @@ footer {
   #messageForm #messageSubmit {
     width: 10%;
     font-weight: lighter;
-    background-color: #77b300;
-    color: white; }
+    border: 1px solid #77b300;
+    background-color: #424242;
+    color: #77b300;
+    -webkit-transition: all .25s ease;
+    transition: all .25s ease; }
+    #messageForm #messageSubmit:hover {
+      background-color: #77b300;
+      color: white; }
 
-/* Some globals */
-*, *::after, *::before {
-  padding: 0;
-  margin: 0; }
-
-/* Body background */
-.pageWrapper {
-  content: attr(data-bg);
-  /*content: "My text"; if not using js*/
-  content: "www.BLABBER.com";
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-y: hidden;
-  text-align: justify;
-  font-family: 'Codystar', cursive;
-  font-size: 80px;
-  color: #ff90c4; }
+/*# sourceMappingURL=styles.css.map */
