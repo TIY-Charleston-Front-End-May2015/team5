@@ -56,6 +56,17 @@ GENERAL
 /*********************
 LANDING PAGE
 *********************/
+header {
+  height: 10%;
+  border-bottom: 1px solid #282828;
+  background-color: #424242; }
+  header > div {
+    height: 100%;
+    width: 100%;
+    display: none; }
+  header > div.active {
+    display: flex; }
+
 #landingPage {
   width: 100%;
   height: 100%;
@@ -182,7 +193,8 @@ aside {
   background-color: #2a9fd6; }
 
 #asideMain {
-  height: 90%; }
+  height: 90%;
+  border: 1px solid black; }
 
 .status {
   display: flex;
@@ -233,7 +245,8 @@ section {
 #sectionMain {
   height: 90%;
   overflow: scroll;
-  padding-bottom: 12.5px; }
+  padding-bottom: 12.5px;
+  background-color: #888888; }
 
 /*********************
 MESSAGE
@@ -241,7 +254,8 @@ MESSAGE
 .message {
   display: flex;
   flex-wrap: wrap;
-  padding: 12.5px 0 0 0; }
+  padding: 12.5px 0 0 0;
+  background-color: #888888; }
   .message:last-child .messageBorderBlock {
     display: none; }
 
@@ -270,13 +284,26 @@ MESSAGE
   text-overflow: clip; }
 
 .messageContent {
-  width: 72.5%; }
+  width: 72.5%;
+  height: auto;
+  background-color: #CCCCCC;
+  border-radius: 4px;
+  box-shadow: 3px 3px 0px 0px black; }
 
 .messageContentTime {
   color: #77b300;
   font-weight: lighter;
-  font-size: 0.8rem;
-  margin-bottom: 5px; }
+  font-size: 0.5rem;
+  margin-bottom: 5px;
+  margin-left: 2%;
+  margin-top: 1%; }
+
+.messageContentTimeBlock {
+  font-size: .5rem; }
+
+.messageContentText {
+  margin-left: 2%;
+  margin-right: 3%; }
 
 .messageDelete {
   width: 7.5%;
@@ -323,7 +350,9 @@ footer {
   height: 12%;
   border-top: 1px solid 1px solid #282828;
   background-color: #424242;
-  color: black; }
+  color: black;
+  border-top: 1px solid black;
+  box-shadow: 0px -5px 5px 0px black; }
 
 #footerBlock {
   width: 80%;
