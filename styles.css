@@ -107,8 +107,8 @@ header {
         border: 1px solid #77b300;
         font-weight: lighter;
         color: #77b300;
-        transition: all .25s ease;
-        -webkit-transition: all .25s ease; }
+        transition: all 0.25s ease;
+        -webkit-transition: all 0.25s ease; }
         #landingPage #landingPageBlock #landingPageFormBlock #landingPageForm #landingPageSubmitBlock > input:hover {
           color: white;
           background-color: #77b300; }
@@ -150,6 +150,7 @@ header {
       display: flex;
       justify-content: center;
       align-items: center; }
+
 #headerLoggedInBlock #loggedInRight {
   height: 100%;
   width: 14.5%;
@@ -163,8 +164,8 @@ header {
     background-color: #424242;
     color: red;
     border: 1px solid red;
-    transition: all .25s ease;
-    -webkit-transition: all .25s ease; }
+    transition: all 0.25s ease;
+    -webkit-transition: all 0.25s ease; }
     #headerLoggedInBlock #loggedInRight button:hover {
       background-color: #cc0000;
       color: white; }
@@ -321,8 +322,8 @@ MESSAGE
   font-weight: lighter;
   font-size: .75rem;
   color: #cc0000;
-  -webkit-transition: all .25s ease;
-  transition: all .25s ease; }
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease; }
   .messageDeleteCircle:hover {
     background-color: #cc0000;
     color: white; }
@@ -376,10 +377,8 @@ footer {
     border: 1px solid #77b300;
     background-color: #424242;
     color: #77b300;
-    -webkit-transition: all .25s ease;
-    transition: all .25s ease; }
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease; }
     #messageForm #messageSubmit:hover {
       background-color: #77b300;
       color: white; }
-
-/*# sourceMappingURL=styles.css.map */
