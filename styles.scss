@@ -6,6 +6,7 @@ $roboto: 'Roboto', sans, lightcyan;
 $bgColor: #060606;
 $defaultButtonBG: rgb(66,66,66);
 $primaryButtonBG: rgb(42, 159, 214);
+$successColor: rgb(119, 179, 0);
 $successButtonBG: rgb(119, 179, 0);
 $infoButtonBG: rgb(153, 51, 204);
 $warningButtonBG: rgb(255, 136, 0);
@@ -13,8 +14,10 @@ $dangerButtonBG: rgb(204, 0, 0);
 $pageBG: rgb(6, 6, 6);
 $textColorWhite: rgb(255, 255, 255);
 $panelContentColor: #8888A0;
+$namesColor: #888888;
 $aLinkColorBlue: #2a9fd6;
 $inputFont: #888888;
+$bordersGray: 1px solid #282828;
 /*********************
 SETUP
 *********************/
@@ -66,6 +69,7 @@ GENERAL
   text-align: center;
   padding: 20px 0;
 
+
   h1 {
     font-size: 4rem;
     font-weight: lighter;
@@ -87,7 +91,7 @@ HEADER
 
 header {
   height: 10%;
-  border-bottom: 1px solid gray;
+  border-bottom: $bordersGray;
   background-color: $defaultButtonBG;
 
   > div {
@@ -194,14 +198,14 @@ text-decoration: underline; */
           > input {
             height: 100%;
             background-color: white;
-            border: 1px solid lightgreen;
-            color: lightgreen;
+            border: 1px solid $successColor;
+            color: $successColor;
             transition: all .25s ease;
             -webkit-transition: all .25s ease;
 
             &:hover {
               color: white;
-              background-color: lightgreen;
+              background-color: $successColor;
             }
           }
         }
@@ -217,7 +221,7 @@ text-decoration: underline; */
 
       #error {
         display: none;
-        background-color: red;
+        background-color: $dangerButtonBG;
         width: 90%;
         height: 80%;
 
@@ -288,13 +292,13 @@ text-decoration: underline; */
           >input[type=submit] {
             background-color: white;
             color: lightgreen;
-            border: 1px solid lightgreen;
+            border: 1px solid $successColor;
             transition: all .25s ease;
             -webkit-transition: all .25s ease;
 
             &:hover {
               color: white;
-              background-color: lightgreen;
+              background-color: $successColor;
             }
           }
         }
@@ -372,7 +376,7 @@ text-decoration: underline; */
       -webkit-transition: all .25s ease;
 
       &:hover {
-        background-color: red;
+        background-color: $dangerButtonBG;
         color: white;
       }
     }
@@ -395,7 +399,7 @@ ASIDE
 aside {
   width: 25%;
   height: 100%;
-  border-right: 1px solid gray;
+  border-right: $primaryButtonBG;
 }
 
 #asideHeader {
@@ -403,7 +407,7 @@ aside {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid gray;
+  border-bottom: $bordersGray;
   background-color: $primaryButtonBG;
 }
 
@@ -416,7 +420,7 @@ aside {
   align-items: center;
   height: 60px;
   background-color: $defaultButtonBG;
-  border-bottom: 1px solid gray;
+  border-bottom: $bordersGray;
 
   > div {
     display: flex;
@@ -438,6 +442,7 @@ aside {
 .statusName {
   width: 50%;
   font-size: .8rem;
+  color: $namesColor;
 }
 
 .statusOn {
@@ -446,7 +451,7 @@ aside {
   .statusOnCircle {
     height: 20px;
     width: 20px;
-    background-color: lightgreen;
+    background-color: $successColor;
     border-radius: 50%;
   }
 }
@@ -465,7 +470,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid gray;
+  border-bottom: $bordersGray;
   background-color: $primaryButtonBG;
 }
 
@@ -520,6 +525,8 @@ MESSAGE
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  font-size: 18px;
+  text-overflow:clip;
 }
 
 .messageContent {
@@ -527,7 +534,7 @@ MESSAGE
 }
 
 .messageContentTime {
-  color: gray;
+  color: $successColor;
   font-weight: lighter;
   font-size: 0.8rem;
   margin-bottom: 5px;
@@ -545,10 +552,11 @@ MESSAGE
   cursor: pointer;
   width: 25px;
   height: 25px;
-  border: 1px solid gray;
+  border: $bordersGray;
   border-radius: 50%;
   font-weight: lighter;
   font-size: .75rem;
+  color: $dangerButtonBG;
 }
 
 .messageDeleteX {
@@ -561,10 +569,13 @@ MESSAGE
 }
 
 .messageBorderBlock {
-  width: 45%;
+  width: 85%;
   height: 12.5px;
   margin: 0 auto;
-  border-bottom: 1px solid gray;
+  /* border-bottom: $bordersGray; */
+  -webkit-box-shadow: 0px 14px 5px -5px rgba(136,136,136,0.25);
+  -moz-box-shadow: 0px 14px 5px -5px rgba(136,136,136,0.25);
+  box-shadow: 0px 14px 5px -5px rgba(136,136,136,0.25);
 }
 
 /*********************
@@ -573,7 +584,7 @@ FOOTER
 
 footer {
   height: 12%;
-  border-top: 1px solid gray;
+  border-top: 1px solid $bordersGray;
   background-color: $defaultButtonBG;
   color: black;
 
@@ -611,4 +622,5 @@ footer {
     color: $textColorWhite;
 
   }
+}
 }

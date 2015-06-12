@@ -58,7 +58,7 @@ HEADER
 *********************/
 header {
   height: 10%;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #282828;
   background-color: #424242; }
   header > div {
     height: 100%;
@@ -130,13 +130,13 @@ text-decoration: underline; */ }
           #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormSubmitBlock > input {
             height: 100%;
             background-color: white;
-            border: 1px solid lightgreen;
-            color: lightgreen;
+            border: 1px solid #77b300;
+            color: #77b300;
             transition: all 0.25s ease;
             -webkit-transition: all 0.25s ease; }
             #headerLoggedOutBlock #loggedOutRight #loggedOutRightForm #logInForm #logInFormSubmitBlock > input:hover {
               color: white;
-              background-color: lightgreen; }
+              background-color: #77b300; }
     #headerLoggedOutBlock #loggedOutRight #loggedOutRightError {
       width: 25%;
       height: 100%;
@@ -145,7 +145,7 @@ text-decoration: underline; */ }
       align-items: center; }
       #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error {
         display: none;
-        background-color: red;
+        background-color: #cc0000;
         width: 90%;
         height: 80%; }
         #headerLoggedOutBlock #loggedOutRight #loggedOutRightError #error #errorSymbolBlock {
@@ -192,12 +192,12 @@ text-decoration: underline; */ }
           #headerLoggedOutBlock #loggedOutCreate #createForm > div > div > input[type=submit] {
             background-color: white;
             color: lightgreen;
-            border: 1px solid lightgreen;
+            border: 1px solid #77b300;
             transition: all 0.25s ease;
             -webkit-transition: all 0.25s ease; }
             #headerLoggedOutBlock #loggedOutCreate #createForm > div > div > input[type=submit]:hover {
               color: white;
-              background-color: lightgreen; }
+              background-color: #77b300; }
   #headerLoggedOutBlock #loggedOutCreate.activeCreate {
     display: block; }
 
@@ -251,7 +251,7 @@ text-decoration: underline; */ }
     transition: all 0.25s ease;
     -webkit-transition: all 0.25s ease; }
     #headerLoggedInBlock #loggedInRight button:hover {
-      background-color: red;
+      background-color: #cc0000;
       color: white; }
 
 /*********************
@@ -267,14 +267,14 @@ ASIDE
 aside {
   width: 25%;
   height: 100%;
-  border-right: 1px solid gray; }
+  border-right: #2a9fd6; }
 
 #asideHeader {
   height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #282828;
   background-color: #2a9fd6; }
 
 #asideMain {
@@ -285,7 +285,7 @@ aside {
   align-items: center;
   height: 60px;
   background-color: #424242;
-  border-bottom: 1px solid gray; }
+  border-bottom: 1px solid #282828; }
   .status > div {
     display: flex;
     justify-content: center;
@@ -300,14 +300,15 @@ aside {
 
 .statusName {
   width: 50%;
-  font-size: .8rem; }
+  font-size: .8rem;
+  color: #888888; }
 
 .statusOn {
   width: 25%; }
   .statusOn .statusOnCircle {
     height: 20px;
     width: 20px;
-    background-color: lightgreen;
+    background-color: #77b300;
     border-radius: 50%; }
 
 /*********************
@@ -322,7 +323,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #282828;
   background-color: #2a9fd6; }
 
 #sectionMain {
@@ -360,13 +361,15 @@ MESSAGE
   height: 40%;
   display: flex;
   justify-content: center;
-  align-items: flex-start; }
+  align-items: flex-start;
+  font-size: 18px;
+  text-overflow: clip; }
 
 .messageContent {
   width: 72.5%; }
 
 .messageContentTime {
-  color: gray;
+  color: #77b300;
   font-weight: lighter;
   font-size: 0.8rem;
   margin-bottom: 5px; }
@@ -382,10 +385,11 @@ MESSAGE
   cursor: pointer;
   width: 25px;
   height: 25px;
-  border: 1px solid gray;
+  border: 1px solid #282828;
   border-radius: 50%;
   font-weight: lighter;
-  font-size: .75rem; }
+  font-size: .75rem;
+  color: #cc0000; }
 
 .messageDeleteX {
   position: absolute;
@@ -396,17 +400,20 @@ MESSAGE
   margin: auto; }
 
 .messageBorderBlock {
-  width: 45%;
+  width: 85%;
   height: 12.5px;
   margin: 0 auto;
-  border-bottom: 1px solid gray; }
+  /* border-bottom: $bordersGray; */
+  -webkit-box-shadow: 0px 14px 5px -5px rgba(136, 136, 136, 0.25);
+  -moz-box-shadow: 0px 14px 5px -5px rgba(136, 136, 136, 0.25);
+  box-shadow: 0px 14px 5px -5px rgba(136, 136, 136, 0.25); }
 
 /*********************
 FOOTER
 *********************/
 footer {
   height: 12%;
-  border-top: 1px solid gray;
+  border-top: 1px solid 1px solid #282828;
   background-color: #424242;
   color: black; }
 
@@ -431,3 +438,25 @@ footer {
     font-weight: lighter;
     background-color: #77b300;
     color: white; }
+
+/* Some globals */
+*, *::after, *::before {
+  padding: 0;
+  margin: 0; }
+
+/* Body background */
+.pageWrapper {
+  content: attr(data-bg);
+  /*content: "My text"; if not using js*/
+  content: "www.BLABBER.com";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: hidden;
+  text-align: justify;
+  font-family: 'Codystar', cursive;
+  font-size: 80px;
+  color: #ff90c4; }
