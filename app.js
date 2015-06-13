@@ -108,7 +108,12 @@ var page = {
     success: function (data) {
 
       page.addAllMessagesToDOM(data.reverse());
-      // page.hideDelete();
+      $('.message').each(function(idx, el, arr){
+        if ($(el).find('.messageInfoName').text().trim() !== $username) {
+          $(el).find('.messageDelete').hide();
+        }
+      });
+    },
       $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
     },
     error: function (err) {
@@ -246,12 +251,7 @@ var page = {
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////This is Clayton's way to not show the delete circle/////////////
-    // $('.message').each(function(idx, el, arr){
-    //   if ($(el).find('.messageInfoName').text().trim() !== $username) {
-    //     $(el).find('.messageDelete').hide();
-  //     }
-  //   });
-  // },
+
 ///////////////////////////////////////////////////////////
 
   loadTemplate: function (tmplName, data, $target){
