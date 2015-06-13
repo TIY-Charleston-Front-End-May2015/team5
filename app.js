@@ -8,7 +8,7 @@ $(document).ready(function(){
 
 var page = {
 
-  url: "http://tiy-fee-rest.herokuapp.com/collections/blabber",
+  url: "http://tiy-fee-rest.herokuapp.com/collections/blabberClay",
 
   init: function () {
     page.initStyling();
