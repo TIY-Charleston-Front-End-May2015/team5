@@ -37,10 +37,10 @@ templates.message = [
 templates.userStatus = [
   "<div class='status'>",
    "<div class='statusImage'>",
-      "<%=status%>",
+      "<%=userIcon%>",
    "</div>",
    "<div class='statusName'>",
-     "Name",
+     "<%=$username%>",
    "</div>",
    "<div class='statusOn'>",
      "<div class='statusOnCircle'>",

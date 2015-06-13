@@ -8,16 +8,21 @@ $(document).ready(function(){
 var page = {
 
   url: "http://tiy-fee-rest.herokuapp.com/collections/blabber",
+  urllogin: "http://tiy-fee-rest.herokuapp.com/collections/blabberuserlogin",
 
   init: function () {
     page.initStyling();
     page.initEvents();
 
+
   },
 
   initStyling: function () {
     page.loadMessages();
+
   },
+
+
 
 
   initEvents: function (event) {
@@ -60,6 +65,7 @@ var page = {
         $('#landingPageImageErrorBlock').removeClass('activeImageError');
         $('#landingPageUsernameErrorBlock').removeClass('activeUsernameError');
         page.loadTemplate("loggedInLeftBlock", userInfoArray, $('#loggedInLeft'));
+        page.loadTemplate("userStatus", userInfoArray, $('#asideMain'))
 
       } else if ($userImage === undefined && $('#landingFormUsername').val().trim().length === 0) {
         $('#landingPageImageErrorBlock').addClass('activeImageError');
@@ -87,6 +93,7 @@ var page = {
     _.each(messageCollection, page.addOneMessageToDOM);
   },
 
+
   loadMessages: function () {
     $.ajax({
     url: page.url,
@@ -94,11 +101,7 @@ var page = {
     success: function (data) {
 
       page.addAllMessagesToDOM(data.reverse());
-      $('.message').each(function(idx, el, arr){
-        if ($(el).find('.messageInfoName').text().trim() !== $username) {
-          $(el).find('.messageDelete').hide();
-        }
-      });
+      // page.hideDelete();
       $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
     },
     error: function (err) {
@@ -106,6 +109,8 @@ var page = {
     }
   });
 },
+
+
 
   createMessage: function (newMessage) {
 
@@ -125,20 +130,6 @@ var page = {
     });
   },
 
-  updateMessage: function (editedMessage, MessageId) {
-
-  $.ajax({
-    url: page.url + '/' + messageId,
-    method: 'PUT',
-    data: editedMessage,
-    success: function (data) {
-      $('.message').html('');
-      page.loadMessages();
-
-    },
-    error: function (err) {}
-  });
-},
 
 
   deleteMessage: function(deleteId) {
@@ -152,7 +143,7 @@ var page = {
   });
 },
 
-// statusName: function() {}
+
 
 
 
@@ -167,7 +158,6 @@ var page = {
         author: $attachUsername,
         userIcon: $userImage
       }
-      console.log(newMessage);
       page.createMessage(newMessage);
     } else {
       $('#messageInput').val("");
@@ -175,13 +165,74 @@ var page = {
     }
   },
 
-  navPages: function (event) {
-  event.preventDefault();
+////////////Trying to create Login here//////////////
+  addLogin: function(event) {
+    event.preventDefault();
+    var newLogin = {
+      login: $('#landingFormUsername').val(),
+    }
+    page.createUserName();
+  },
 
-  var clickedPage = $(this).attr('rel');
-  $(clickedPage).siblings().removeClass('active');
-  $(clickedPage).addClass('active');
-},
+  createUserName: function(login) {
+    $.ajax({
+
+      url: page.urllogin,
+      method: 'POST',
+      data: login,
+      success: function(data) {
+        page.addOneLoginToDOM(data);
+      },
+      error: function(err) {
+      console.log("error", err);
+    }
+    });
+  },
+
+
+  loadLogin: function () {
+    $.ajax({
+    url: page.urllogin,
+    method: 'GET',
+    success: function (data) {
+
+      $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
+    },
+
+
+    error: function (err) {
+
+    }
+  });
+  },
+
+  addOneLoginToDOM: function(login) {
+    page.loadTemplate("userStatus", login, $('#asideMain'));
+  },
+////////////////////////////////////////////////////
+
+
+//////////////This is David's way to not show delete circle currently has error//////
+  // getDelete: function(event){
+  //   var toDelete = _.reject($('.message')), function() {
+  //
+  //     return ('.message').find('.messageInfoName') = $username;
+  //
+  //   },
+  //
+  // hideDelete: function() {
+  //   page.getDelete.().find('.messageDelete').hide();
+  // },
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////This is Clayton's way to not show the delete circle/////////////
+    // $('.message').each(function(idx, el, arr){
+    //   if ($(el).find('.messageInfoName').text().trim() !== $username) {
+    //     $(el).find('.messageDelete').hide();
+  //     }
+  //   });
+  // },
+///////////////////////////////////////////////////////////
 
   loadTemplate: function (tmplName, data, $target){
     var compiledTmpl = _.template(page.getTemplate(tmplName));
