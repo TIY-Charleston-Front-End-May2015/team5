@@ -26,7 +26,9 @@ var page = {
 
 
   initEvents: function (event) {
-
+    /////////Added this for login///////////////////
+    $('#landingPageForm').on('submit', page.addLogin);
+    ////////////////////////////////////////////////
     $('#messageForm').on('submit', page.addMessage);
 
     $('#logOutButton').on('click', function(){
@@ -65,7 +67,9 @@ var page = {
         $('#landingPageImageErrorBlock').removeClass('activeImageError');
         $('#landingPageUsernameErrorBlock').removeClass('activeUsernameError');
         page.loadTemplate("loggedInLeftBlock", userInfoArray, $('#loggedInLeft'));
+        /////////////Added this for status bar/////////////////
         page.loadTemplate("userStatus", userInfoArray, $('#asideMain'))
+        ///////////////////////////////////////////////////////
 
       } else if ($userImage === undefined && $('#landingFormUsername').val().trim().length === 0) {
         $('#landingPageImageErrorBlock').addClass('activeImageError');
@@ -77,7 +81,10 @@ var page = {
         $('#landingPageUsernameErrorBlock').addClass('activeUsernameError');
         $('#landingPageImageErrorBlock').removeClass('activeImageError');
       }
+
+
     });
+
 
     // setInterval(function() {
     //    page.loadMessages();
@@ -111,7 +118,6 @@ var page = {
 },
 
 
-
   createMessage: function (newMessage) {
 
     $.ajax({
@@ -129,22 +135,6 @@ var page = {
 
     });
   },
-
-
-
-  deleteMessage: function(deleteId) {
-  $.ajax({
-    url: page.url + "/" + deleteId,
-    method: 'DELETE',
-    success: function (data) {
-      $('#sectionMain').html('');
-      page.loadMessages();
-    }
-  });
-},
-
-
-
 
 
   addMessage: function(event) {
@@ -165,16 +155,30 @@ var page = {
     }
   },
 
+
+  deleteMessage: function(deleteId) {
+  $.ajax({
+    url: page.url + "/" + deleteId,
+    method: 'DELETE',
+    success: function (data) {
+      $('#sectionMain').html('');
+      page.loadMessages();
+    }
+  });
+},
+
+
 ////////////Trying to create Login here//////////////
   addLogin: function(event) {
     event.preventDefault();
     var newLogin = {
       login: $('#landingFormUsername').val(),
+      password: $('#landingFormPassword').val(),
     }
-    page.createUserName();
+    page.createLogin(newLogin);
   },
 
-  createUserName: function(login) {
+  createLogin: function(login) {
     $.ajax({
 
       url: page.urllogin,
@@ -189,14 +193,24 @@ var page = {
     });
   },
 
+  deleteLogin: function(deleteId) {
+  $.ajax({
+    url: page.urllogin + "/" + deleteId,
+    method: 'DELETE',
+    success: function (data) {
+      // $('.status').html('');
+      page.loadLogin();
+    }
+  });
+},
+
 
   loadLogin: function () {
     $.ajax({
     url: page.urllogin,
     method: 'GET',
     success: function (data) {
-
-      $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
+      console.log("Logins Loaded");
     },
 
 
@@ -206,9 +220,15 @@ var page = {
   });
   },
 
+  addAllLoginsToDOM: function(loginCollection) {
+    _.each(loginCollection, page.addOneLoginToDOM);
+  },
+
   addOneLoginToDOM: function(login) {
     page.loadTemplate("userStatus", login, $('#asideMain'));
   },
+
+
 ////////////////////////////////////////////////////
 
 

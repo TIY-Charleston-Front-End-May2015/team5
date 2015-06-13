@@ -16,9 +16,9 @@ body {
   color: white;
   font-family: "Roboto", sans, lightcyan; }
 
-/* #credit {
-  display: none;
-} */
+#credit {
+  display: none; }
+
 *, *:before, *:after {
   box-sizing: border-box;
   -webkit-box-sizing: border-box; }
@@ -79,6 +79,24 @@ header {
     display: none; }
   header > div.active {
     display: flex; }
+
+#landingPagePasswordBlock {
+  position: relative;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  #landingPagePasswordBlock > label {
+    padding: 15px 0;
+    font-weight: bolder;
+    letter-spacing: 0.08rem; }
+  #landingPagePasswordBlock > input {
+    background-color: black;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid white; }
+    #landingPagePasswordBlock > input:focus {
+      outline: 0; }
 
 #landingPage {
   width: 100%;
