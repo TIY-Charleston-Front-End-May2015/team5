@@ -108,14 +108,17 @@ var page = {
     success: function (data) {
 
       page.addAllMessagesToDOM(data.reverse());
+      
       $('.message').each(function(idx, el, arr){
-        if ($(el).find('.messageInfoName').text().trim() !== $username) {
-          $(el).find('.messageDelete').hide();
-        }
-      });
-    },
+         if ($(el).find('.messageInfoName').text().trim() !== $username) {
+           $(el).find('.messageDelete').hide();
+         }
+        });
+
       $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
     },
+
+
     error: function (err) {
 
     }

@@ -66,7 +66,7 @@ GENERAL
 *********************/
 
 #pageWrapper {
-  max-width: 900px;
+  max-width: 80%;
   margin: 0 auto;
 }
 
@@ -123,13 +123,37 @@ header {
   }
 }
 
-#landingPagePasswordBlock {
-  position: relative;
-  margin-bottom: 25px;
-  display: flex;
-  flex-direction: column;
+#landingPage {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  position: fixed;
+  z-index: 100;
+  display: inline-flex;
+  justify-content: center;
   align-items: center;
 
+  #landingPageBlock {
+    width: 50%;
+    height: 100%;
+    overflow: visible;
+  }
+  #landingPageTitleBlock {
+    height: auto;
+    padding: 10px 0;
+    text-align: center;
+    h1 {
+      font-size: 10vmax;
+      font-weight: lighter;
+    }
+  }
+}
+
+#landingPageForm {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
   > label {
     padding: 15px 0;
     font-weight: bolder;
@@ -146,215 +170,264 @@ header {
       outline: 0;
     }
   }
-  }
+}
 
-#landingPage {
+#landingPageFormBlock {
+  height: 70%;
   width: 100%;
-  height: 100%;
-  background-color: black;
-  position: fixed;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
 
-  #landingPageBlock {
-    max-width: 500px;
+  #landingPageForm {
+    height: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
-    #landingPageTitleBlock {
-      padding: 25px 0;
-      text-align: center;
-      h1 {
-        font-size: 4rem;
-        font-weight: lighter;
-      }
-    }
+    #landingPageInputWrapper{
+      width: 80%;
+      height: auto;
+      font-size: 2.5vmax;
+      display: inline-flex;
+      justify-content: center;
+      margin-bottom: 2%;
 
-    #landingPageFormBlock {
-  
-
-      #landingPageForm {
-        display: flex;
-        flex-direction: column;
-
-        #landingPageUsernameBlock {
-          position: relative;
-          margin-bottom: 25px;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-
-          > label {
-            padding: 15px 0;
-            font-weight: bolder;
-            letter-spacing: 0.08rem;
-          }
-
-          > input {
-            background-color: black;
-            padding: 10px;
-            width: 100%;
-            border: 1px solid white;
-
-            &:focus {
-              outline: 0;
-            }
-          }
-
-
-          #landingPageUsernameErrorBlock {
-            display: none;
-            position: absolute;
-            left: 104.75%;
-            top: 0;
-            height: 100%;
-            width: 125px;
-            border: 1px solid $dangerButtonBG;
-
-            #landingPageUsernameError {
-              height: 100%;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-
-              #usernameErrorIcon {
-                height: 35%;
-                width: 100%;
-                background-color: $dangerButtonBG;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              }
-
-              #usernameErrorText {
-                height: 65%;
-                font-size: .75rem;
-                padding: 2.5px;
-                text-align: center;
-                font-weight: lighter;
-                font-size: .7rem;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              }
-            }
-          }
-
-          #landingPageUsernameErrorBlock.activeUsernameError {
-            display: block;
-          }
+      #landingPageUsernameBlock{
+          height: 100%;
+          width: 49%;
+          display: inline-flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-right: 1%;
+        > label {
+          padding: 1% 0;
+          font-weight: bolder;
+          letter-spacing: 0.08rem;
         }
 
-        #landingPageImagesBlock {
+        > input {
+          background-color: black;
+          padding: 1%;
           width: 100%;
           border: 1px solid white;
-          position: relative;
-          display: flex;
-          justify-content: space-around;
-          flex-wrap: wrap;
 
-          .landingPageImage {
-            width: 22.5%;
-            cursor: pointer;
-            padding: 8px;
-            margin: 8px 0;
-            border: 1px solid black;
-            transition: all .25s ease;
-            -webkit-transition: all .25s ease;
-
-            &:hover {
-              border-color: $defaultButtonBG;
-            }
-          }
-
-          .selectedUserImage {
-            border-color: $successButtonBG;
-
-            &:hover {
-              border-color: $successButtonBG;
-            }
-          }
-
-          #landingPageImageErrorBlock {
-            display: none;
-            position: absolute;
-            left: 105%;
-            top: 0;
-            height: 100%;
-            width: 125px;
-            border: 1px solid $dangerButtonBG;
-            text-align: center;
-            align-items: center;
-
-            #landingPageImageError {
-              height: 100%;
-              display: flex;
-              flex-direction: column;
-              justify-content: flex-start;
-              align-items: center;
-
-              > div {
-                display: flex;
-                align-items: center;
-              }
-
-              #imageErrorIcon {
-                height: 25%;
-                width: 100%;
-                background-color: $dangerButtonBG;
-                display: flex;
-                justify-content: center;
-
-                span {
-                  font-size: 1.75rem;
-
-                  &:before {
-                    color: white;
-                  }
-                }
-              }
-
-              #imageErrorText {
-                height: 75%;
-                font-weight: lighter;
-                color: $dangerButtonBG;
-              }
-            }
-          }
-
-          #landingPageImageErrorBlock.activeImageError {
-            display: flex;
-          }
-        }
-
-        #landingPageSubmitBlock {
-          padding: 15px 0;
-
-          > input {
-            width: 100%;
-            padding: 10px;
-            background-color: black;
-            border: 1px solid $successColor;
-            font-weight: lighter;
-            color: $successColor;
-            transition: all .25s ease;
-            -webkit-transition: all .25s ease;
-
-            &:hover {
-              color: white;
-              background-color: $successColor;
-            }
-
-            &:focus {
-              outline: 0;
-            }
+          &:focus {
+            outline: 0;
           }
         }
       }
+      #landingPagePasswordBlock {
+        height: 100%;
+        width: 49%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        > label {
+          padding: 1% 0;
+          font-weight: bolder;
+          letter-spacing: 0.08rem;
+        }
+
+        > input {
+          background-color: black;
+          padding: 1%;
+          width: 100%;
+          border: 1px solid white;
+
+          &:focus {
+            outline: 0;
+          }
+        }
+      }
+    }
+    #landingPageSubmitBlock {
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 5%;
+    }
+
+  }
+}
+
+#landingPageUsernameErrorBlock {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 125px;
+  border: 1px solid $dangerButtonBG;
+  #landingPageUsernameError {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    #usernameErrorIcon {
+      height: 35%;
+      width: 100%;
+      background-color: $dangerButtonBG;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #usernameErrorText {
+      height: 65%;
+      font-size: .75rem;
+      padding: 2.5px;
+      text-align: center;
+      font-weight: lighter;
+      font-size: .7rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
+
+
+
+#landingPageImagesBlock {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border: 1px solid white;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: auto;
+  overflow: visible;
+  .landingPageImage {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid black;
+    transition: all .25s ease;
+    -webkit-transition: all .25s ease;
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      height: 70px;
+      width: 70px;
+    }
+
+      &:hover {
+        border-color: $defaultButtonBG;
+      }
+    }
+  }
+
+  .selectedUserImage {
+    border-color: $successButtonBG;
+
+    &:hover {
+      border-color: $successButtonBG;
+    }
+  }
+
+
+  #landingPageImageErrorBlock {
+    display: none;
+    position: absolute;
+    left: 105%;
+    top: 0;
+    height: 100%;
+    width: 125px;
+    border: 1px solid $dangerButtonBG;
+    text-align: center;
+    align-items: center;
+
+    #landingPageImageError {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+
+      > div {
+        display: flex;
+        align-items: center;
+      }
+
+      #imageErrorIcon {
+        height: 25%;
+        width: 100%;
+        background-color: $dangerButtonBG;
+        display: flex;
+        justify-content: center;
+
+        span {
+          font-size: 1.75rem;
+
+          &:before {
+            color: white;
+          }
+        }
+      }
+
+      #imageErrorText {
+        height: 75%;
+        font-weight: lighter;
+        color: $dangerButtonBG;
+      }
+    }
+  }
+
+#landingPageImageErrorBlock.activeImageError {
+    display: flex;
+  }
+
+#landingPageSubmitBlock {
+  padding: 15px 0;
+
+  > input {
+    width: 100%;
+    background-color: black;
+    border: 1px solid $successColor;
+    font-weight: lighter;
+    color: $successColor;
+    transition: all .25s ease;
+    -webkit-transition: all .25s ease;
+
+    &:hover {
+      color: white;
+      background-color: $successColor;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+}
+
+
+#landingPageUsernameErrorBlock.activeUsernameError {
+display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*********************
 HEADER
