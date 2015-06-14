@@ -1,6 +1,7 @@
 var templates = {};
 
 
+
 templates.message = [
       "<div class='message' data-id='<%=_id%>'>",
         "<div class='messageInfo'>",
@@ -32,13 +33,14 @@ templates.message = [
        "</div>"
 ].join("");
 
+
 templates.userStatus = [
   "<div class='status'>",
    "<div class='statusImage'>",
-      "<%=status%>",
+      "<%= userIcon %>",
    "</div>",
    "<div class='statusName'>",
-     "Name",
+     "<%= username%>",
    "</div>",
    "<div class='statusOn'>",
      "<div class='statusOnCircle'>",

@@ -16,6 +16,9 @@ body {
   color: white;
   font-family: "Roboto", sans, lightcyan; }
 
+/* #credit {
+  display: none;
+} */
 *, *:before, *:after {
   box-sizing: border-box;
   -webkit-box-sizing: border-box; }
@@ -299,7 +302,8 @@ aside {
   background-color: #2a9fd6; }
 
 #asideMain {
-  height: 90%; }
+  height: 90%;
+  overflow: scroll; }
 
 .status {
   display: flex;
