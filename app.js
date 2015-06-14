@@ -25,7 +25,9 @@ var page = {
 
 
   initEvents: function (event) {
-
+    /////////Added this for login///////////////////
+    $('#landingPageForm').on('submit', page.addLogin);
+    ////////////////////////////////////////////////
     $('#messageForm').on('submit', page.addMessage);
 
     $('#logOutButton').on('click', function(){
@@ -76,38 +78,18 @@ var page = {
     $('#landingPageForm').on('submit', function(e) {
       e.preventDefault();
       if ($userImage !== undefined && $('#landingFormUsername').val().trim().length > 0) {
-          $.ajax({
-          url: page.urllogin,
-          method: 'GET',
-          success: function (data) {
-            console.log('USERS: ', data);
-            var loginPass = true;
-            _.each(data, function(idx, el, arr) {
-              if ($('#landingFormUsername').val() === data[el].username) {
-                $('#landingPageUsernameErrorBlock').addClass('activeUsernameError');
-                $('#usernameErrorText').text('Username taken.');
-                loginPass = false;
-              }
-            })
-            if (loginPass) {
-              $username = $('#landingFormUsername').val();
-              var userInfoObject = {
-                username: $username,
-                userIcon: $userImage
-              }
-              page.addUser();
-              $('#landingPage').fadeOut();
-              $('#landingPageImageErrorBlock').removeClass('activeImageError');
-              $('#landingPageUsernameErrorBlock').removeClass('activeUsernameError');
-              page.loadTemplate("loggedInLeftBlock", userInfoObject, $('#loggedInLeft'));
-              page.loadUserStatuses();
-            }
-          },
-          error: function (err) {
-
-          }
-        });
-
+        $username = $('#landingFormUsername').val();
+        var userInfoArray = {
+          username: $username,
+          userIcon: $userImage
+        }
+        $('#landingPage').fadeOut();
+        $('#landingPageImageErrorBlock').removeClass('activeImageError');
+        $('#landingPageUsernameErrorBlock').removeClass('activeUsernameError');
+        page.loadTemplate("loggedInLeftBlock", userInfoArray, $('#loggedInLeft'));
+        /////////////Added this for status bar/////////////////
+        page.loadTemplate("userStatus", userInfoArray, $('#asideMain'))
+        ///////////////////////////////////////////////////////
 
       } else if ($userImage === undefined && $('#landingFormUsername').val().trim().length === 0) {
         $('#landingPageImageErrorBlock').addClass('activeImageError');
@@ -119,7 +101,10 @@ var page = {
         $('#landingPageUsernameErrorBlock').addClass('activeUsernameError');
         $('#landingPageImageErrorBlock').removeClass('activeImageError');
       }
+
+
     });
+
 
     // setInterval(function() {
           // $('#asideMain').html("");
@@ -144,8 +129,17 @@ var page = {
     success: function (data) {
       // console.log('DATA: ', data);
       page.addAllMessagesToDOM(data.reverse());
+
+      $('.message').each(function(idx, el, arr){
+         if ($(el).find('.messageInfoName').text().trim() !== $username) {
+           $(el).find('.messageDelete').hide();
+         }
+        });
+
       $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
     },
+
+
     error: function (err) {
 
     }
@@ -194,19 +188,6 @@ var page = {
     });
   },
 
-
-
-  deleteMessage: function(deleteId) {
-  $.ajax({
-    url: page.url + "/" + deleteId,
-    method: 'DELETE',
-    success: function (data) {
-      $('#sectionMain').html('');
-      page.loadMessages();
-    }
-  });
-},
-
   addMessage: function(event) {
     event.preventDefault();
 
@@ -225,16 +206,29 @@ var page = {
     }
   },
 
-  addUser: function() {
-    var newUser = {
-      username: $username,
-      userIcon: $userImage,
-      available: true
+  deleteMessage: function(deleteId) {
+  $.ajax({
+    url: page.url + "/" + deleteId,
+    method: 'DELETE',
+    success: function (data) {
+      $('#sectionMain').html('');
+      page.loadMessages();
     }
-    page.createUser(newUser);
+  });
+},
+
+
+////////////Trying to create Login here//////////////
+  addLogin: function(event) {
+    event.preventDefault();
+    var newLogin = {
+      login: $('#landingFormUsername').val(),
+      password: $('#landingFormPassword').val(),
+    }
+    page.createLogin(newLogin);
   },
 
-  createUser: function(newUser) {
+  createLogin: function(login) {
     $.ajax({
       url: page.urllogin,
       method: 'POST',
@@ -248,13 +242,26 @@ var page = {
     });
   },
 
-  loadUsers: function() {
+
+  deleteLogin: function(deleteId) {
+  $.ajax({
+    url: page.urllogin + "/" + deleteId,
+    method: 'DELETE',
+    success: function (data) {
+      // $('.status').html('');
+      page.loadLogin();
+    }
+  });
+},
+
+
+  loadLogin: function () {
     $.ajax({
     url: page.urllogin,
     method: 'GET',
     success: function (data) {
-      console.log('DATA: ', data);
-      return data;
+      console.log("Logins Loaded");
+
     },
     error: function (err) {
 
@@ -291,6 +298,7 @@ var page = {
   });
   },
 
+
   deleteAllUsers: function() {
     $.ajax({
       url: page.urllogin,
@@ -300,6 +308,16 @@ var page = {
       }
     });
   },
+
+  addAllLoginsToDOM: function(loginCollection) {
+    _.each(loginCollection, page.addOneLoginToDOM);
+  },
+
+  addOneLoginToDOM: function(login) {
+    page.loadTemplate("userStatus", login, $('#asideMain'));
+  },
+
+
 ////////////////////////////////////////////////////
 
 
@@ -317,12 +335,7 @@ var page = {
 ///////////////////////////////////////////////////////////////////////////////
 
 ///////////////This is Clayton's way to not show the delete circle/////////////
-    // $('.message').each(function(idx, el, arr){
-    //   if ($(el).find('.messageInfoName').text().trim() !== $username) {
-    //     $(el).find('.messageDelete').hide();
-  //     }
-  //   });
-  // },
+
 ///////////////////////////////////////////////////////////
 
   loadTemplate: function (tmplName, data, $target){
