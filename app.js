@@ -1,5 +1,7 @@
 var $username;
 var $userImage;
+var $mostRecentMessageId;
+
 $(document).ready(function(){
   page.init();
 });
@@ -8,18 +10,15 @@ $(document).ready(function(){
 var page = {
 
   url: "http://tiy-fee-rest.herokuapp.com/collections/blabber",
-  urllogin: "http://tiy-fee-rest.herokuapp.com/collections/blabberuserlogin",
+  urllogin: "http://tiy-fee-rest.herokuapp.com/collections/blabberUsers",
 
   init: function () {
     page.initStyling();
     page.initEvents();
-
-
   },
 
   initStyling: function () {
     page.loadMessages();
-
   },
 
 
@@ -32,15 +31,36 @@ var page = {
     $('#messageForm').on('submit', page.addMessage);
 
     $('#logOutButton').on('click', function(){
-      location.reload();
+      $.ajax({
+        url: page.urllogin,
+        method: 'GET',
+        success: function (data) {
+          console.log('DATA: ', data);
+          var users = data;
+          _.each(users, function(idx, el, arr){
+            if (users[el].username === $username) {
+              page.deleteUser(users[el]._id);
+            }
+          });
+          $username = undefined;
+          $userImage = undefined;
+          $('#landingFormUsername').val("");
+          $('.landingPageImage').removeClass('selectedUserImage');
+          $('#landingPage').fadeIn();
+          $('#asideMain').html("");
+          $('#sectionMain').html("");
+          $('#loggedInLeft').html("");
+        },
+        error: function (err) {
+
+        }
+      });
     });
 
     $('#landingPageImagesBlock').on('click', '.landingPageImage', function(e){
       e.preventDefault();
-      console.log('hello');
       $(this).siblings().removeClass('selectedUserImage');
       $(this).addClass('selectedUserImage');
-      console.log($(this).html().trim());
       $userImage = $(this).html().trim();
     });
 
@@ -87,7 +107,10 @@ var page = {
 
 
     // setInterval(function() {
+          // $('#asideMain').html("");
+          // $('#sectionMain').html("");
     //    page.loadMessages();
+    //    page.loadUserStatuses();
     // }, 2000);
 
   },
@@ -99,16 +122,14 @@ var page = {
   addAllMessagesToDOM: function(messageCollection) {
     _.each(messageCollection, page.addOneMessageToDOM);
   },
-
-
   loadMessages: function () {
     $.ajax({
     url: page.url,
     method: 'GET',
     success: function (data) {
-
+      // console.log('DATA: ', data);
       page.addAllMessagesToDOM(data.reverse());
-      
+
       $('.message').each(function(idx, el, arr){
          if ($(el).find('.messageInfoName').text().trim() !== $username) {
            $(el).find('.messageDelete').hide();
@@ -125,6 +146,29 @@ var page = {
   });
 },
 
+  getMostRecentMessage: function() {
+    $mostRecentMessageId = $('.message').last().data('id');
+  },
+
+  getNewestMessages: function(recentId) {
+    $.ajax({
+      url: page.url,
+      method: 'GET',
+      success: function (data) {
+        console.log('DATA: ', data);
+        for (var i = 0; i < data.length; i++){
+
+          if (data[i]._id === recentId) {
+
+          }
+        }
+        console.log(result);
+      },
+      error: function (err) {
+
+      }
+    });
+  },
 
   createMessage: function (newMessage) {
 
@@ -144,7 +188,6 @@ var page = {
     });
   },
 
-
   addMessage: function(event) {
     event.preventDefault();
 
@@ -162,7 +205,6 @@ var page = {
 
     }
   },
-
 
   deleteMessage: function(deleteId) {
   $.ajax({
@@ -188,18 +230,18 @@ var page = {
 
   createLogin: function(login) {
     $.ajax({
-
       url: page.urllogin,
       method: 'POST',
-      data: login,
+      data: newUser,
       success: function(data) {
-        page.addOneLoginToDOM(data);
+        console.log('New user created.');
       },
       error: function(err) {
       console.log("error", err);
     }
     });
   },
+
 
   deleteLogin: function(deleteId) {
   $.ajax({
@@ -219,13 +261,52 @@ var page = {
     method: 'GET',
     success: function (data) {
       console.log("Logins Loaded");
+
     },
-
-
     error: function (err) {
 
     }
   });
+},
+
+  deleteUser: function(deleteId) {
+    $.ajax({
+      url: page.urllogin + "/" + deleteId,
+      method: 'DELETE',
+      success: function (data) {
+        console.log('User deleted.');
+      }
+    });
+  },
+
+  createUserStatuses: function(data) {
+    _.each(data, function(idx, el, arr) {
+      page.loadTemplate("userStatus", data[el], $('#asideMain'));
+    })
+  },
+
+  loadUserStatuses: function(data) {
+    $.ajax({
+    url: page.urllogin,
+    method: 'GET',
+    success: function (data) {
+      page.createUserStatuses(data);
+    },
+    error: function (err) {
+
+    }
+  });
+  },
+
+
+  deleteAllUsers: function() {
+    $.ajax({
+      url: page.urllogin,
+      method: 'DELETE',
+      success: function (data) {
+        console.log('User deleted.');
+      }
+    });
   },
 
   addAllLoginsToDOM: function(loginCollection) {
@@ -267,7 +348,7 @@ var page = {
     return templates[name];
   },
   getCurrentTime: function() {
-    var time = moment().format('hh:mm:ss');
+    var time = moment().format('hh:mm:ss DD/MM/YY');
     return time;
   },
   updateTime: function() {
@@ -275,6 +356,33 @@ var page = {
       console.log('One messageContentTimeBlock');
       var momentTime = moment($('.messageContentTimeBlock').text()).fromNow();
       $('.messageContentTimeBlock').text(momentTime);
+    });
+  },
+  disableDeleteCircles: function() {
+    $.ajax({
+      url: page.url,
+      method: 'GET',
+      success: function (data) {
+        var authorsNotEqual = _.reject(data, {author: $username});
+        authorsNotEqual = $.unique(authorsNotEqual);
+        console.log(authorsNotEqual);
+        for (var i = 0; i < authorsNotEqual.length; i++) {
+          console.log('Authors not equal to $username: ', authorsNotEqual[i].author);
+          $('.message').each(function(idx, el, arr){
+            console.log('Author of each message: ', $(el).find('.messageInfoName').text().trim());
+            console.log(authorsNotEqual[i].author === $(el).find('.messageInfoName').text().trim());
+             if (authorsNotEqual[i].author === $(el).find('.messageInfoName').text().trim()) {
+               $(el).find('.messageDeleteCircle').hide();
+               console.log($(el).find('.messageDeleteCircle'));
+             } else {
+               $(el).find('.messageDeleteCircle').show();
+             }
+          });
+        };
+      },
+      error: function (err) {
+
+      }
     });
   }
 };

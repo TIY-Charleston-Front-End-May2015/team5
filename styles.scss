@@ -539,13 +539,14 @@ aside {
 
 #asideMain {
   height: 90%;
+  overflow: scroll;
 }
 
 .status {
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: $defaultButtonBG;
+  background-color: #222;
   border-bottom: $bordersGray;
 
   > div {
