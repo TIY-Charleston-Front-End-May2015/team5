@@ -177,10 +177,11 @@ header {
 
 #landingPageUsernameErrorBlock {
   display: none;
-  position: absolute;
-  left: 50%;
-  top: 0;
-  height: 100%;
+  height: 50%;
+  width: 15%;
+  position: fixed;
+  top: 40%;
+  left: 75%;
   width: 125px;
   border: 1px solid #cc0000; }
   #landingPageUsernameErrorBlock #landingPageUsernameError {

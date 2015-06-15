@@ -13,7 +13,7 @@ var page = {
   init: function () {
     page.initStyling();
     page.initEvents();
-
+    page.loadNewMessages();
 
   },
 
@@ -86,11 +86,14 @@ var page = {
     });
 
 
-    // setInterval(function() {
-    //    page.loadMessages();
-    // }, 2000);
+
+    setInterval(function() {
+       page.loadNewMessages();
+
+    }, 2000);
 
   },
+
 
   addOneMessageToDOM: function(message) {
     page.loadTemplate("message", message, $('#sectionMain'));
@@ -101,14 +104,15 @@ var page = {
   },
 
 
-  loadMessages: function () {
+
+  loadMessages: function (data) {
     $.ajax({
     url: page.url,
     method: 'GET',
     success: function (data) {
 
       page.addAllMessagesToDOM(data.reverse());
-      
+
       $('.message').each(function(idx, el, arr){
          if ($(el).find('.messageInfoName').text().trim() !== $username) {
            $(el).find('.messageDelete').hide();
@@ -125,6 +129,28 @@ var page = {
   });
 },
 
+addNewMessagesToDOM: function(newMessages) {
+    _.each(newMessages, page.addOneMessageToDOM);
+  },
+
+  loadNewMessages: function(data){
+
+    $.ajax({
+      url: page.url,
+      method: 'GET',
+      success: function(data) {
+        var timeSort = _.sortBy($(data), ('timestamp') );
+        var newMessages = _.rest(timeSort, $('.message').length);
+
+        console.log("New Message: ", newMessages);
+        console.log("timeSort:", timeSort);
+        if (data.length !== $('.message').length) {
+          page.addNewMessagesToDOM(newMessages);
+          $('#sectionMain').scrollTop($('#sectionMain')[0].scrollHeight);
+        }
+      }
+    })
+  },
 
   createMessage: function (newMessage) {
 
@@ -175,6 +201,18 @@ var page = {
   });
 },
 
+  deleteAllMessages: function(messageCollection) {
+    $.ajax({
+      url: page.url,
+      method: 'DELETE',
+      success: function (data) {
+        $('#sectionMain').html('');
+        page.loadMessages();
+      }
+    });
+
+  },
+
 
 ////////////Trying to create Login here//////////////
   addLogin: function(event) {
@@ -212,14 +250,27 @@ var page = {
   });
 },
 
+  deleteAllLogins: function(messageCollection) {
+    $.ajax({
+      url: page.urllogin,
+      method: 'DELETE',
+      success: function (data) {
+        // $('.status').html('');
+        page.loadLogin();
+      }
+    });
+  },
+
 
   loadLogin: function () {
     $.ajax({
     url: page.urllogin,
     method: 'GET',
     success: function (data) {
+      page.addAllLoginsToDOM();
       console.log("Logins Loaded");
     },
+
 
 
     error: function (err) {
@@ -235,27 +286,8 @@ var page = {
   addOneLoginToDOM: function(login) {
     page.loadTemplate("userStatus", login, $('#asideMain'));
   },
-
-
-////////////////////////////////////////////////////
-
-
-//////////////This is David's way to not show delete circle currently has error//////
-  // getDelete: function(event){
-  //   var toDelete = _.reject($('.message')), function() {
-  //
-  //     return ('.message').find('.messageInfoName') = $username;
-  //
-  //   },
-  //
-  // hideDelete: function() {
-  //   page.getDelete.().find('.messageDelete').hide();
-  // },
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////This is Clayton's way to not show the delete circle/////////////
-
-///////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
 
   loadTemplate: function (tmplName, data, $target){
     var compiledTmpl = _.template(page.getTemplate(tmplName));
