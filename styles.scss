@@ -183,45 +183,15 @@ header {
     flex-wrap: wrap;
     justify-content: center;
 
-    #landingPageInputWrapper{
-      width: 80%;
-      height: auto;
-      font-size: 2.5vmax;
-      display: inline-flex;
-      justify-content: center;
-      margin-bottom: 2%;
-
       #landingPageUsernameBlock{
-          height: 100%;
-          width: 49%;
-          display: inline-flex;
+          position: relative;
+          width: 80%;
+          display: flex;
+          flex-direction: column;
           justify-content: center;
           flex-wrap: wrap;
-          margin-right: 1%;
-        > label {
-          padding: 1% 0;
-          font-weight: bolder;
-          letter-spacing: 0.08rem;
-        }
+          text-align: center;
 
-        > input {
-          background-color: black;
-          padding: 1%;
-          width: 100%;
-          border: 1px solid white;
-
-          &:focus {
-            outline: 0;
-          }
-        }
-      }
-      #landingPagePasswordBlock {
-        height: 100%;
-        width: 49%;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
         > label {
           padding: 1% 0;
           font-weight: bolder;
@@ -246,18 +216,17 @@ header {
       margin-right: auto;
       margin-bottom: 5%;
     }
-
-  }
 }
 
 #landingPageUsernameErrorBlock {
   display: none;
   position: absolute;
-  left: 50%;
+  left: 105%;
   top: 0;
-  height: 100%;
+  height: 100px;
   width: 125px;
   border: 1px solid $dangerButtonBG;
+
   #landingPageUsernameError {
     height: 100%;
     display: flex;
@@ -292,35 +261,37 @@ header {
 #landingPageImagesBlock {
   display: inline-flex;
   flex-wrap: wrap;
+  padding: 10px;
   border: 1px solid white;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 80%;
   height: auto;
   overflow: visible;
+
   .landingPageImage {
-    width: 100px;
-    height: 100px;
+    width: 22.5%;
     cursor: pointer;
     padding: 8px;
-    margin: 8px 0;
     border: 1px solid black;
     transition: all .25s ease;
     -webkit-transition: all .25s ease;
     display:inline-flex;
     align-items: center;
     justify-content: center;
+
     img {
       height: 70px;
       width: 70px;
     }
 
-      &:hover {
-        border-color: $defaultButtonBG;
-      }
+    &:hover {
+      border-color: $defaultButtonBG;
     }
   }
+}
 
+#landingPageImagesBlock {
   .selectedUserImage {
     border-color: $successButtonBG;
 
@@ -328,7 +299,7 @@ header {
       border-color: $successButtonBG;
     }
   }
-
+}
 
   #landingPageImageErrorBlock {
     display: none;
@@ -481,6 +452,12 @@ header {
         justify-content: center;
         align-items: center;
       }
+
+      #loggedInLeftEdit {
+        cursor: pointer;
+        color: $primaryButtonBG;
+        font-size: .75rem;
+      }
     }
   }
 
@@ -580,6 +557,10 @@ aside {
     width: 20px;
     background-color: $successColor;
     border-radius: 50%;
+  }
+
+  .statusOnCircle.availableFalse {
+    background-color: $dangerButtonBG !important;
   }
 }
 

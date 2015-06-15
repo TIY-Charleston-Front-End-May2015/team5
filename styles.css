@@ -126,61 +126,37 @@ header {
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center; }
-    #landingPageFormBlock #landingPageForm #landingPageInputWrapper {
+    #landingPageFormBlock #landingPageForm #landingPageUsernameBlock {
+      position: relative;
       width: 80%;
-      height: auto;
-      font-size: 2.5vmax;
-      display: inline-flex;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
-      margin-bottom: 2%; }
-      #landingPageFormBlock #landingPageForm #landingPageInputWrapper #landingPageUsernameBlock {
-        height: 100%;
-        width: 49%;
-        display: inline-flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-right: 1%; }
-        #landingPageFormBlock #landingPageForm #landingPageInputWrapper #landingPageUsernameBlock > label {
-          padding: 1% 0;
-          font-weight: bolder;
-          letter-spacing: 0.08rem; }
-        #landingPageFormBlock #landingPageForm #landingPageInputWrapper #landingPageUsernameBlock > input {
-          background-color: black;
-          padding: 1%;
-          width: 100%;
-          border: 1px solid white; }
-          #landingPageFormBlock #landingPageForm #landingPageInputWrapper #landingPageUsernameBlock > input:focus {
-            outline: 0; }
-      #landingPageFormBlock #landingPageForm #landingPageInputWrapper #landingPagePasswordBlock {
-        height: 100%;
-        width: 49%;
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap; }
-        #landingPageFormBlock #landingPageForm #landingPageInputWrapper #landingPagePasswordBlock > label {
-          padding: 1% 0;
-          font-weight: bolder;
-          letter-spacing: 0.08rem; }
-        #landingPageFormBlock #landingPageForm #landingPageInputWrapper #landingPagePasswordBlock > input {
-          background-color: black;
-          padding: 1%;
-          width: 100%;
-          border: 1px solid white; }
-          #landingPageFormBlock #landingPageForm #landingPageInputWrapper #landingPagePasswordBlock > input:focus {
-            outline: 0; }
-    #landingPageFormBlock #landingPageForm #landingPageSubmitBlock {
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 5%; }
+      flex-wrap: wrap;
+      text-align: center; }
+      #landingPageFormBlock #landingPageForm #landingPageUsernameBlock > label {
+        padding: 1% 0;
+        font-weight: bolder;
+        letter-spacing: 0.08rem; }
+      #landingPageFormBlock #landingPageForm #landingPageUsernameBlock > input {
+        background-color: black;
+        padding: 1%;
+        width: 100%;
+        border: 1px solid white; }
+        #landingPageFormBlock #landingPageForm #landingPageUsernameBlock > input:focus {
+          outline: 0; }
+  #landingPageFormBlock #landingPageSubmitBlock {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%; }
 
 #landingPageUsernameErrorBlock {
   display: none;
   position: absolute;
-  left: 50%;
+  left: 105%;
   top: 0;
-  height: 100%;
+  height: 100px;
   width: 125px;
   border: 1px solid #cc0000; }
   #landingPageUsernameErrorBlock #landingPageUsernameError {
@@ -209,18 +185,17 @@ header {
 #landingPageImagesBlock {
   display: inline-flex;
   flex-wrap: wrap;
+  padding: 10px;
   border: 1px solid white;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 80%;
   height: auto;
   overflow: visible; }
   #landingPageImagesBlock .landingPageImage {
-    width: 100px;
-    height: 100px;
+    width: 22.5%;
     cursor: pointer;
     padding: 8px;
-    margin: 8px 0;
     border: 1px solid black;
     transition: all .25s ease;
     -webkit-transition: all .25s ease;
@@ -233,9 +208,9 @@ header {
     #landingPageImagesBlock .landingPageImage:hover {
       border-color: #424242; }
 
-.selectedUserImage {
+#landingPageImagesBlock .selectedUserImage {
   border-color: #77b300; }
-  .selectedUserImage:hover {
+  #landingPageImagesBlock .selectedUserImage:hover {
     border-color: #77b300; }
 
 #landingPageImageErrorBlock {
@@ -331,6 +306,10 @@ header {
       display: flex;
       justify-content: center;
       align-items: center; }
+    #headerLoggedInBlock #loggedInLeft #loggedInLeftBlock #loggedInLeftEdit {
+      cursor: pointer;
+      color: #2a9fd6;
+      font-size: .75rem; }
 #headerLoggedInBlock #loggedInRight {
   height: 100%;
   width: 14.5%;
@@ -407,6 +386,8 @@ aside {
     width: 20px;
     background-color: #77b300;
     border-radius: 50%; }
+  .statusOn .statusOnCircle.availableFalse {
+    background-color: #cc0000 !important; }
 
 /*********************
 SECTION

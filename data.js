@@ -43,8 +43,11 @@ templates.userStatus = [
      "<%= username%>",
    "</div>",
    "<div class='statusOn'>",
-     "<div class='statusOnCircle'>",
-     "</div>",
+   "<% if (available === 'true') { %>",
+     "<div class='statusOnCircle'></div>",
+   "<% } else if (available === 'false') { %>",
+     "<div class='statusOnCircle availableFalse'></div>",
+   "<% } %>",
    "</div>",
   "</div>"
 ].join("");
@@ -56,5 +59,9 @@ templates.loggedInLeftBlock = [
   "</div>",
   "<div id='loggedInLeftName'>",
   "<%= username %>",
-  "</div></div>"
+  "</div>",
+  "<div id='loggedInLeftEdit'>",
+  "Edit",
+  "</div>",
+  "</div>"
 ].join("");
